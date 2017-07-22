@@ -16,7 +16,7 @@ BROKEN_mips64=		Does not build: error: Need a uint128_t implementation!
 BROKEN_powerpc64=	Does not build: error: Need a uint128_t implementation!
 BROKEN_sparc64=		Does not build: error: Need a uint128_t implementation!
 
-USES_HARDENING=	pie relro safestack
+USE_HARDENING=		pie relro safestack
 
 USES=		cpe ssl
 CPE_VENDOR=	torproject
@@ -65,6 +65,7 @@ SSLTLS_BASE_CONFIGURE_ENV=	OPENSSLRPATH=/usr/lib
 SSLTLS_BASE_LIB_DEPENDS=	libevent.so:devel/libevent
 SSLTLS_PORTS_CONFIGURE_ENV=	OPENSSLRPATH=${OPENSSLLIB}
 SSLTLS_PORTS_LIB_DEPENDS=	libevent.so:devel/libevent
+SSLTLS_PORTS_USES=		localbase
 STATIC_CONFIGURE_ENABLE=	-static-tor
 STATIC_CONFIGURE_BUILD_DEPENDS=	libevent.a:devel/libevent
 TCMALLOC_CONFIGURE_WITH=	-tcmalloc

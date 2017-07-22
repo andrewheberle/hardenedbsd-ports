@@ -15,7 +15,7 @@ BROKEN_mips64=		Does not build: error: Need a uint128_t implementation!
 BROKEN_powerpc64=	Does not build: error: Need a uint128_t implementation!
 BROKEN_sparc64=		Does not build: error: Need a uint128_t implementation!
 
-USES_HARDENING=	pie relro safestack
+USE_HARDENING=		pie relro safestack
 
 USES=		cpe ssl
 CPE_VENDOR=	torproject
