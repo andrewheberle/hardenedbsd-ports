@@ -25,6 +25,8 @@ GH_TAGNAME=	345e19c
 
 PREFIX=		${LOCALBASE}/${PORTNAME}
 
+MAKEFILE=	${WRKSRC}/client.mk
+
 BUILD_DEPENDS=	${AUTOCONF}:${AUTOCONF_PORT} \
 		yasm:devel/yasm \
 		zip:archivers/zip
@@ -40,6 +42,9 @@ pre-configure:
 	(cd ${WRKSRC}/js/src && ${AUTOCONF})
 
 do-build:
-	(cd ${WRKSRC} && /bin/sh mach build)
+	(cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${SH} mach build)
+
+do-configure:
+	(cd ${WRKSRC} && ${SETENV} ${CONFIGURE_ENV} ${SH} mach configure)
 
 .include <bsd.port.mk> 
