@@ -17,6 +17,8 @@ AUTOCONF=		${LOCALBASE}/bin/autoconf-${AUTOCONF_VERSION}
 
 USES=		cpe libtool gmake pkgconfig python:2.7
 
+USES_HARDENING=	pie:configure relro
+
 USE_GITHUB=	yes
 
 GH_ACCOUNT=	torbsd
@@ -24,8 +26,12 @@ GH_PROJECT=	torb
 GH_TAGNAME=	345e19c
 
 PREFIX=		${LOCALBASE}/${PORTNAME}
-
 MAKEFILE=	${WRKSRC}/client.mk
+
+MAKE_ENV=	MOZILLA_NAME="Tor Browser" \
+		MOZILLA_VER=${PORTVERSION} \
+		MOZILLA_BIN=${PORTNAME} \
+		MOZILLA=${PORTNAME}
 
 BUILD_DEPENDS=	${AUTOCONF}:${AUTOCONF_PORT} \
 		yasm:devel/yasm \
