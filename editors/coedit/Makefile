@@ -3,9 +3,8 @@
 
 PORTNAME=	coedit
 DISTVERSION=	3_update_3
+PORTREVISION=	1
 CATEGORIES=	editors
-MASTER_SITES=	https://github.com/BBasile/Coedit/archive/
-DISTNAME=	${DISTVERSION}
 
 MAINTAINER=	acm@FreeBSD.org
 COMMENT=	IDE for the D programming language
@@ -19,13 +18,18 @@ BUILD_DEPENDS=	lazbuild:editors/lazarus \
 RUN_DEPENDS=	ldmd2:lang/ldc \
 		dscanner:devel/d-scanner \
 		dcd-client:devel/dcd-client \
-		dcd-server:devel/dcd-server
+		dcd-server:devel/dcd-server \
+		dfmt:devel/dfmt \
+		ddemangle:lang/dlang-tools
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	BBasile
+GH_PROJECT=	Coedit
 
 USE_FPC=	cairo fcl-base fcl-db fcl-image fcl-json fcl-net fcl-registry \
 		fcl-stl fcl-web fcl-xml numlib openssl pasjpeg rtl-objpas \
 		regexpr rtl-extra x11
 
-WRKSRC=		${WRKDIR}/${PORTNAME:S/c/C/}-${DISTVERSION}
 DESKTOP_ENTRIES="Coedit" \
 		"IDE for the D programming language" \
 		"${PREFIX}/share/pixmaps/${PORTNAME}.png" \
@@ -65,7 +69,8 @@ post-patch:
 				-e 's|%%D_LIB_DIR%%|${D_LIB_DIR}|g' \
 					-e 's|%%D_INCLUDE_DIR%%|${D_INCLUDE_DIR}|g' \
 						 ${WRKSRC}/dastworx/build.sh
-	${REINPLACE_CMD} -e 's|LINUX|FREEBSD|g' ${WRKSRC}/src/ce_common.pas
+	${REINPLACE_CMD} -e 's|LINUX|UNIX|g' ${WRKSRC}/src/ce_common.pas ${WRKSRC}/src/ce_dcd.pas
+	${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|g' ${WRKSRC}/src/ce_compilers.pas
 
 pre-build:
 	@${MKDIR} ${WRKSRC}/tmppcp
@@ -75,7 +80,7 @@ pre-build:
 	@cd ${LOCALBASE}/share/lazarus-${LAZARUS_VER} && \
 		${FIND} * -type f -exec ${LN} -fs ${LOCALBASE}/share/lazarus-${LAZARUS_VER}/{} ${LAZARUS_DIR}/{} \;
 	@${FIND} ${LAZARUS_DIR} -type d -name ${BUILDNAME} -type d -print0 | \
-                ${XARGS} -0 ${RM} -R
+		${XARGS} -0 ${RM} -R
 
 do-build:
 	@cd ${WRKSRC}/dastworx && ${SH} build.sh

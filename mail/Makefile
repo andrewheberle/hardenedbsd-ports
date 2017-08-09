@@ -97,12 +97,7 @@
     SUBDIR += dma
     SUBDIR += dot-forward
     SUBDIR += dovecot
-    SUBDIR += dovecot-antispam
-    SUBDIR += dovecot-managesieve
-    SUBDIR += dovecot-sieve
-    SUBDIR += dovecot2
-    SUBDIR += dovecot2-antispam-plugin
-    SUBDIR += dovecot2-pigeonhole
+    SUBDIR += dovecot-pigeonhole
     SUBDIR += drac
     SUBDIR += dracmail
     SUBDIR += dspam
@@ -325,6 +320,7 @@
     SUBDIR += p5-Email-Address
     SUBDIR += p5-Email-Address-List
     SUBDIR += p5-Email-Address-Loose
+    SUBDIR += p5-Email-Address-XS
     SUBDIR += p5-Email-AddressParser
     SUBDIR += p5-Email-Date
     SUBDIR += p5-Email-Date-Format
@@ -622,6 +618,7 @@
     SUBDIR += rubygem-mail_room
     SUBDIR += rubygem-mailboxer
     SUBDIR += rubygem-mailfactory
+    SUBDIR += rubygem-mini_mime
     SUBDIR += rubygem-pony
     SUBDIR += rubygem-premailer
     SUBDIR += rubygem-premailer-rails

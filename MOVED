@@ -1274,7 +1274,6 @@ www/xpi-statusbarclock||2010-10-01|Has expired: Development has been ceased and 
 devel/cego-base|devel/lfc|2010-10-02|Project was renamed
 devel/cego-xml|devel/lfcxml|2010-10-02|Project was renamed
 www/p5-WWW-Pastebin-RafbNet-Create||2010-10-02|http://rafb.net service is dead
-devel/maven||2010-10-03|Has expired: Development has been ceased, superseded by devel/maven2
 games/daimonin-client|games/daimonin|2010-10-04|Renamed
 sysutils/rsyslog55|sysutils/rsyslog5|2010-10-05|Renamed
 sysutils/rsyslog55-dbi|sysutils/rsyslog5-dbi|2010-10-05|Renamed
@@ -7602,7 +7601,6 @@ devel/erlang-mustache|devel/erlang-bbmustache|2015-06-21|Renamed upstream
 dns/maradns1|dns/maradns|2015-06-23|Has expired: MaraDNS 1 end-of-life: June 21, 2015, use dns/maradns
 net/py-soappy-devel||2015-06-25|Please use net/py-soappy instead. It's fresher than -devel
 devel/armv6-freebsd10.0-xdev||2015-06-27|Not usable for the purpose it has been intended for
-devel/bear|devel/erlang-bear|2015-06-27|Renamed with erlang- prefix
 devel/common_lib|devel/erlang-common_lib|2015-06-27|Renamed with erlang- prefix
 devel/cowlib|devel/erlang-cowlib|2015-06-27|Renamed with erlang- prefix
 devel/cuttlefish|devel/erlang-cuttlefish|2015-06-27|Renamed with erlang- prefix
@@ -8772,7 +8770,6 @@ sysutils/gosa||2016-11-20|Has expired: this version of gosa cannot be fixed (req
 security/krb5-112||2016-11-20|Has expired: EOL twelve months after release of krb5-1.14
 astro/osmium|astro/libosmium|2016-11-23|Rename according to upstream
 deskutils/xfce4-notification-daemon|deskutils/xfce4-notifyd|2016-11-23|Has expired: No longer supported by upstream, replaced with deskutils/xfce4-notifyd
-archivers/brotli|archivers/py-brotli|2016-11-24|Brotli is a python module
 textproc/clucene-qt5||2016-11-25|Reintegrated into devel/qt5-help
 devel/go-shellwords||2016-11-26|Integrated into textproc/fzf build procedure
 www/gecko-sharp20||2016-11-27|Has expired: Broken, no upstream found and no release in 8 years
@@ -8932,7 +8929,6 @@ www/rubygem-activeresource||2017-01-07|Has expired: Upstream support ended
 www/rubygem-responders-rails3||2017-01-07|Has expired: Depends on deprecated www/rubygem-railties
 www/rubygem-jquery-ui-rails||2017-01-07|Has expired: Depends on deprecated www/rubygem-railties
 www/rubygem-haml-rails||2017-01-07|Has expired: Depends on deprecated www/rubygem-actionpack
-www/rubygem-jquery-rails||2017-01-07|Has expired: Depends on deprecated www/rubygem-railties
 www/rubygem-railties||2017-01-07|Has expired: Upstream support ended
 www/rubygem-actionpack||2017-01-07|Has expired: Upstream support ended
 databases/rubygem-rubyrep||2017-01-07|Has expired: Depends on deprecated databases/rubygem-activerecord
@@ -9391,6 +9387,7 @@ net-mgmt/zabbix24-proxy||2017-05-29|Has expired: Upstream has declared this vers
 net-mgmt/zabbix24-server||2017-05-29|Has expired: Upstream has declared this version EoL in 2016 (Q1)
 net/py-cloudfiles|net/py-python-cloudfiles|2017-05-30|Rename to match PyPI naming
 irc/konversation-kde4|irc/konversation|2017-05-30|Renamed to irc/konversation
+net/py-python-swiftclient|databases/py-python-swiftclient|2017-05-31|Duplicate port
 lang/perl5.20|lang/perl5.24|2017-06-01|Support ends three years after .0 release, please upgrade to a more recent version of Perl
 misc/unicode-ucd|textproc/UCD|2017-06-02|unicode-ucd was a duplicate of textproc/UCD, remove the younger port
 print/gutenprint-base|print/gutenprint|2017-06-04|Folded into gutenprint port
@@ -9463,9 +9460,45 @@ www/mediawiki126|www/mediawiki127|2017-07-10|Has expired: Upstream support EoL
 devel/libbrotli|archivers/brotli|2017-07-12|meta project no longer required to build libs
 dns/opendnssec13|dns/opendnssec|2017-07-13|Has expired: Approaching EOL, upgrade to opendnssec 1.4 or 2
 multimedia/banshee||2017-07-13|Has expired: Project is not being actively maintained upstream anymore
-www/libhtp-suricata||2017-07-16|No longer required. security/suricata now uses official (not forked) libhtp 
+www/libhtp-suricata||2017-07-16|No longer required. security/suricata now uses official (not forked) libhtp
 databases/py-odbc|databases/py-pyodbc|2017-07-18|Rename to comply with PyPI scheme
 security/sshguard-ipfw|security/sshguard|2017-07-20|Merged with security/sshguard
 security/sshguard-pf|security/sshguard|2017-07-20|Merged with security/sshguard
 security/sshguard-null|security/sshguard|2017-07-20|Merged with security/sshguard
 audio/gstreamer1-plugins-mad|audio/gstreamer1-plugins-mpg123|2017-07-21|The GStreamer 1 mad plugin was removed, the mpg123 plugin supplies the same functionality
+x11-toolkits/gstreamer1-plugins-gtksink|x11-toolkits/gstreamer1-plugins-gtk|2017-07-21|The GStreamer 1 gtksink plugin was renamed
+devel/ffcall|devel/libffcall|2017-07-28|Project was renamed
+databases/grass|databases/grass6|2017-07-30|Project was renamed to allow for grass7
+net/rubygem-oauth212|net/rubygem-oauth2|2017-07-31|Has expired: Only created for www/gitlab; please use net/rubygem-oauth2 instead
+textproc/rubygem-liquid3|textproc/rubygem-liquid|2017-07-31|Has expired: Use textproc/rubygem-liquid instead
+mail/dovecot2-antispam-plugin|mail/dovecot-pigeonhole|2017-07-31|Has expired: Use pigeonhole instead. See https://wiki2.dovecot.org/HowTo/AntispamWithSieve
+mail/dovecot-antispam|mail/dovecot-pigeonhole|2017-07-31|Has expired: Dovecot-1.x is deprecated. Use dovecot2 and dovecot2-antispam-plugin instead
+mail/dovecot-sieve|mail/dovecot-pigeonhole|2017-07-31|Has expired: Dovecot-1.x is deprecated. Use dovecot2 and dovecot-pigeonhole instead
+mail/dovecot-managesieve|mail/dovecot-pigeonhole|2017-07-31|Has expired: Dovecot-1.x is deprecated. Use dovecot2 and dovecot-pigeonhole instead
+www/rubygem-jquery-ui-rails5-rails4|www/rubygem-jquery-ui-rails-rails4|2017-07-31|Has expired: Only created for www/gitlab; please use www/rubygem-jquery-ui-rails-rails4 instead
+security/rubygem-omniauth13|security/rubygem-omniauth|2017-07-31|Has expired: Only created for www/gitlab; please use security/rubygem-omniauth instead
+devel/rubygem-health_check22|devel/rubygem-health_check|2017-07-31|Has expired: Only created for www/gitlab; please use devel/rubygem-health_check instead
+devel/rubygem-semantic_puppet0|devel/rubygem-semantic_puppet|2017-07-31|Has expired: Use devel/rubygem-semantic_puppet instead
+devel/rubygem-newrelic_rpm3|devel/rubygem-newrelic_rpm|2017-07-31|Has expired: Only created for www/gitlab; please use devel/rubygem-newrelic_rpm instead
+lang/p5-Parse-Perl||2017-07-31|Has expired: does not build with Perl >= 5.22
+sysutils/rubygem-puppet_forge1|sysutils/rubygem-puppet_forge|2017-07-31|Has expired: Use sysutils/rubygem-puppet_forge instead
+sysutils/rubygem-SyslogLogger||2017-07-31|Has expired: Project is EOL'd because it was merged into Ruby 2.0
+multimedia/avbin||2017-07-31|Has expired: Unfetchable for more than six months (google code has gone away)
+games/gondola||2017-07-31|Depends on expired multimedia/avbin
+sysutils/flyback||2017-07-31|Unfetchable for more than six months (google code has gone away)
+multimedia/py-ffmpeg||2017-07-31|Has expired: Depreciated upstream in favour of ffpyplayer
+devel/cloudabi-binutils-aarch64|devel/cloudabi-toolchain|2017-07-31|ELF-toolchain based tools should be used instead
+devel/cloudabi-binutils-x86_64|devel/cloudabi-toolchain|2017-07-31|ELF-toolchain based tools should be used instead
+security/openvas-libraries|security/openvas8-libraries|2017-08-03|Renamed to include openvas 9 ports
+security/openvas-cli|security/openvas8-cli|2017-08-03|Renamed to include openvas 9 ports. It reflects a better name
+security/openvas-manager|security/openvas8-manager|2017-08-03|Renamed to include openvas 9 ports. It reflects a better name
+security/openvas-scanner|security/openvas8-scanner|2017-08-03|Renamed to include openvas 9 ports. It reflects a better name
+security/greenbone-security-assistant|security/greenbone-security-assistant8|2017-08-03|Renamed to include openvas 9 ports. It reflects a better name
+sysutils/consolekit|sysutils/consolekit2|2017-08-05|Continuation of the consolekit project
+mail/dovecot2|mail/dovecot|2017-08-07|Renamed to mail/dovecot
+mail/dovecot2-pigeonhole|mail/dovecot-pigeonhole|2017-08-07|Renamed to mail/dovecot-pigeonhole
+devel/hs-MonadCatchIO-mtl||2017-08-08|Deprecated in favor of the exceptions package
+devel/hs-MonadCatchIO-transformers||2017-08-08|Deprecated in favor of the exceptions package
+devel/hs-directory||2017-08-08|Part of the bundled packages in ghc
+devel/hs-syb-with-class-instances-text||2017-08-08|Upstream is unmaintained
+textproc/hs-citeproc-hs||2017-08-08|Upstream is unmaintained, use pandoc-citeproc instead

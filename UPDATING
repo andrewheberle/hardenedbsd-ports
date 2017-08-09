@@ -5,6 +5,136 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20170808:
+  AFFECTS: users of lang/ghc and */hs-*
+  AUTHOR: haskell@FreeBSD.org
+
+  The Glorious Glasgow Haskell Compiler has been updated to version
+  8.0.2.  Hence it is recommended to rebuild or reinstall all the
+  dependent ports and the lang/ghc port itself in one of the following
+  ways:
+
+  # portmaster -w -r ghc
+    or
+  # portupgrade -fr lang/ghc
+
+  In case of pkg(8), it is probably safer to remove all the GHC-dependent
+  packages along with GHC and reinstall everything from scratch.  For
+  example:
+
+  # pkg query "%ro" ghc > ghc-pkgs.txt
+  # pkg delete -y lang/ghc
+
+  In ghc-pkgs.txt, check and remove all the packages that have been moved
+  on the update, then use this command:
+
+  # pkg install -y `cat ghc-pkgs.txt`
+
+20170807:
+  AFFECTS: users of mail/dovecot2 and mail/dovecot2-pigeonhole
+  AUTHOR: adamw@FreeBSD.org
+
+  Now that dovecot1 has been removed from the ports tree, dovecot2
+  and dovecot2-pigeonhole have been renamed to simply dovecot and
+  dovecot-pigeonhole.
+
+  pkg should handle the rename automatically, but if you run into
+  trouble, you can point pkg at the new origin via:
+
+  # pkg set -o mail/dovecot2:mail/dovecot
+  # pkg set -o mail/dovecot2-pigeonhole:mail/dovecot-pigeonhole
+
+  Similarly, you can point portmaster at the new location via:
+
+  # portmaster -o mail/dovecot mail/dovecot2
+
+  If all else fails, just remove and reinstall the package:
+
+  # pkg delete dovecot2
+  # pkg install dovecot
+
+20170806:
+  AFFECTS: users of mail/dovecot2-antispam-plugin
+  AUTHOR: adamw@FreeBSD.org
+
+  Development of the antispam plugin ceased years ago, and upstream
+  recommends using pigeonhole (mail/dovecot2-pigeonhole) instead.
+
+  See https://wiki2.dovecot.org/HowTo/AntispamWithSieve for a recipe
+  to replicate the antispam plugin's behaviour.
+
+20170803:
+  AFFECTS: users of net/guacamole-client
+  AUTHOR: ultima@FreeBSD.org
+
+  As of version 0.9.13, the configuration directory for guacamole-client
+  has changed from /usr/local/etc/guacamole to
+  /usr/local/etc/guacamole-client.
+
+20170803:
+  AFFECTS: users of net/guacamole-server
+  AUTHOR: ultima@FreeBSD.org
+
+  As of version 0.9.13, the configuration directory for guacamole-server
+  has changed from /usr/local/etc/guacd to /usr/local/etc/guacamole-server.
+
+20170803:
+  AFFECTS: users of sysutils/terraform
+  AUTHOR: lifanov@FreeBSD.org
+
+  Terraform was updated to version 0.10.0, which split out provider plugins.
+  Provider plugins are now installed in the project directory the next time
+  "terraform init" is run. Please see the complete upgrading guide:
+
+  https://www.terraform.io/upgrade-guides/0-10.html
+
+20170729:
+  AFFECTS: users of net-p2p/bitcoin
+  AUTHOR: lwhsu@FreeBSD.org
+
+  Bitcoin data directory has been changed from /var/db/bitcoind to
+  /var/db/bitcoin.  Users of previous versions may want to migrate data to
+  new location or specify bitcoind_data.
+
+20170729:
+  AFFECTS: users of mail/mailscanner
+  AUTHOR: crees@FreeBSD.org
+
+  Version 5.0.3 of MailScanner introduced a serious bug in packaging.
+  Unfortunately if it is installed, your configuration has been deleted.
+
+  If you have managed to get it working, please back up
+  /usr/local/etc/MailScanner as it will also be deleted on deinstall
+  of the same package.
+
+20170726:
+  AFFECTS: users of www/luakit
+  AUTHOR: ports@textmail.me
+
+  Luakit was updated to version 2017.07.26, which is incompatible to the
+  previous release from 2012. Please remove old configuration files from
+  the following directories:
+        ${PREFIX}/etc/xdg/luakit
+        ${HOME}/.config/luakit
+        ${HOME}/.local/share/luakit
+
+20170721:
+  AFFECTS: users of security/sshguard*
+  AUTHOR: dan.mcgregir@usask.ca
+
+  security/sshguard was updated to 2.0.0, and security/sshguard-pf,
+  security/sshguard-ipfw, and security/sshguard-null have been merged into
+  security/sshguard.
+
+  Configuration of the service is now handled in ${PREFIX}/etc/sshguard.conf.
+  Please select the desired backend, -null is selected by default.
+
+  In order to upgrade from 1.7.1 change the origin to security/sshguard
+
+  # pkg set -o security/sshguard-ipfw:security/sshguard
+  # pkg set -o security/sshguard-null:security/sshguard
+  # pkg set -o security/sshguard-pf:security/sshguard
+
 20170717:
   AFFECTS: users of devel/p5-Log-Any and devel/p5-Log-Any-Adapter-Syslog
   AUTHOR: eugen@FreeBSD.org

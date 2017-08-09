@@ -109,6 +109,7 @@
     SUBDIR += dir2ogg
     SUBDIR += discid
     SUBDIR += dream
+    SUBDIR += drumgizmo
     SUBDIR += drumpiler
     SUBDIR += dsbmixer
     SUBDIR += dssi
@@ -627,6 +628,7 @@
     SUBDIR += py-al
     SUBDIR += py-ao
     SUBDIR += py-apetag
+    SUBDIR += py-aubio
     SUBDIR += py-cddb
     SUBDIR += py-discid
     SUBDIR += py-discogs-client
