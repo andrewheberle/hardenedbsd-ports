@@ -70,7 +70,7 @@ HBSDVERSION!=		${AWK} '/^\#define[[:blank:]]__HardenedBSD_version/ {print $$3}' 
 HBSDVERSION=		0
 .endif
 
-HARDENING_ALL=		cfi pie relro retpoline safestack
+HARDENING_ALL=		cdcfi cfi pie relro retpoline safestack
 HARDENING_OFF?=		# all features are on by default
 
 USE_HARDENING?=		# implicit auto-defaults may apply
@@ -261,11 +261,13 @@ OPTIONS_GROUP_HARDENING+=SAFESTACK
 	${LLVM_OBJDUMP_IS_OBJDUMP} == "yes" && \
 	(${ARCH} == "amd64" || ${ARCH} == "aarch64")
 
-cfi_ARGS?=
+cfi_ARGS?=	auto
 
 .if ${cfi_ARGS:Mauto}
 .if ${_USE_HARDENING:Mstatic}
 cfi_ARGS+=		off
+.else
+USE_HARDENING:=		cfi ${USE_HARDENING:Ncfi}
 .endif
 .endif
 
@@ -280,6 +282,43 @@ OPTIONS_GROUP_HARDENING+=CFI
 OPTIONS_DEFAULT+=	CFI
 .if ${_USE_HARDENING:Mlock} != ""
 OPTIONS_GROUP_HARDENING+=CFI
+.endif
+.endif
+
+.endif
+.endif
+
+#####################
+### Cross-DSO CFI ###
+#####################
+
+.if ${HARDENING_OFF:Mcdcfi} == ""
+
+.if ${OSVERSION} >= 1200055 && ${HBSDVERSION} >= 1200057 \
+	&& ${ARCH} == "amd64" && ${LLD_IS_LD} == "yes" \
+	&& !defined(LLD_UNSAFE) && !defined(USE_GCC)
+
+cdcfi_ARGS?=	auto
+
+.if ${cdcfi_ARGS:Mauto}
+.if ${_USE_HARDENING:Mstatic} || ${USE_HARDENING:Msafestack}
+cdcfi_ARGS+=		off
+.else
+USE_HARDENING:=		cdcfi ${USE_HARDENING:Ncdcfi}
+.endif
+.endif
+
+CDCFI_DESC=		Build with Cross-DSO CFI
+CDCFI_USES=		cdcfi
+
+.if ${_USE_HARDENING:Mlock} == ""
+OPTIONS_GROUP_HARDENING+=CDCFI
+.endif
+
+.if ${USE_HARDENING:Mcdcfi} && ${cdcfi_ARGS:Moff} == ""
+OPTIONS_DEFAULT+=	CDCFI
+.if ${_USE_HARDENING:Mlock} != ""
+OPTIONS_GROUP_HARDENING+=CDCFI
 .endif
 .endif
 
