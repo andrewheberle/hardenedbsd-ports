@@ -28,7 +28,7 @@ CONFIGURE_ARGS+= \
 USE_SUBMAKE=	yes
 CFLAGS+=	-Wno-error
 
-USE_HARDENING=	pie:configure
+USE_HARDENING=	pie:configure cfi:off cdcfi:off
 
 .if !exists(/usr/include/jail.h)
 EXTRA_PATCHES=	${FILESDIR}/extra-patch-docs_pkg.8
