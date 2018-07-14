@@ -19,4 +19,14 @@ CXXFLAGS+=	-fsanitize-cfi-cross-dso
 LDFLAGS+=	-fsanitize-cfi-cross-dso
 .endif
 
+# strip(1) does not support LLVM IR bitcode files
+
+MAKE_ENV+=	DONTSTRIP=yes
+STRIP=		# empty
+STRIP_CMD=	${TRUE}
+
+.if defined(INSTALL_TARGET)
+INSTALL_TARGET:=	${INSTALL_TARGET:S/^install-strip$/install/g}
+.endif
+
 .endif
