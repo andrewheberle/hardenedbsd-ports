@@ -3,7 +3,7 @@
 
 PORTNAME=	freeorion
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.4.8-rc1
+DISTVERSION=	0.4.8-rc2
 CATEGORIES=	games
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -13,7 +13,7 @@ LICENSE=	GPLv2 CC-BY-SA-3.0
 LICENSE_COMB=	multi
 
 LIB_DEPENDS=	libboost_thread.so:devel/boost-libs \
-		libboost_python27.so:devel/boost-python-libs@${PY_FLAVOR}
+		${PY_BOOST}
 
 USE_GITHUB=	yes
 

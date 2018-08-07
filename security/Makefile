@@ -33,6 +33,7 @@
     SUBDIR += authforce
     SUBDIR += autossh
     SUBDIR += avcheck
+    SUBDIR += aws-iam-authenticator
     SUBDIR += axTLS
     SUBDIR += barnyard2
     SUBDIR += barnyard2-sguil
@@ -294,6 +295,7 @@
     SUBDIR += john
     SUBDIR += kbfs
     SUBDIR += kc
+    SUBDIR += kc24
     SUBDIR += kdbx-viewer
     SUBDIR += kedpm
     SUBDIR += keepass
@@ -310,6 +312,7 @@
     SUBDIR += kgpg
     SUBDIR += kgpg-kde4
     SUBDIR += kickpass
+    SUBDIR += klee
     SUBDIR += kleopatra
     SUBDIR += knock
     SUBDIR += knocker
@@ -454,7 +457,7 @@
     SUBDIR += opencryptoki
     SUBDIR += openct
     SUBDIR += openiked
-    SUBDIR += opensaml2
+    SUBDIR += opensaml
     SUBDIR += opensc
     SUBDIR += openscep
     SUBDIR += openssh-askpass
@@ -913,11 +916,15 @@
     SUBDIR += py-certbot-dns-digitalocean
     SUBDIR += py-certbot-dns-dnsimple
     SUBDIR += py-certbot-dns-dnsmadeeasy
+    SUBDIR += py-certbot-dns-gehirn
     SUBDIR += py-certbot-dns-google
+    SUBDIR += py-certbot-dns-linode
     SUBDIR += py-certbot-dns-luadns
     SUBDIR += py-certbot-dns-nsone
+    SUBDIR += py-certbot-dns-ovh
     SUBDIR += py-certbot-dns-rfc2136
     SUBDIR += py-certbot-dns-route53
+    SUBDIR += py-certbot-dns-sakuracloud
     SUBDIR += py-certbot-nginx
     SUBDIR += py-certifi
     SUBDIR += py-certstream
@@ -940,6 +947,7 @@
     SUBDIR += py-flask-httpauth
     SUBDIR += py-flask-kerberos
     SUBDIR += py-flask-saml
+    SUBDIR += py-fteproxy
     SUBDIR += py-gixy
     SUBDIR += py-gnupg
     SUBDIR += py-gnutls
@@ -1004,10 +1012,10 @@
     SUBDIR += py-pyscard
     SUBDIR += py-pysha3
     SUBDIR += py-python-gnupg
+    SUBDIR += py-python-jose
     SUBDIR += py-python-nss
     SUBDIR += py-python-openid
     SUBDIR += py-python-registry
-    SUBDIR += py-python-social-auth
     SUBDIR += py-python3-openid
     SUBDIR += py-pywinrm
     SUBDIR += py-rekall
@@ -1102,6 +1110,7 @@
     SUBDIR += rubygem-devise-two-factor-rails50
     SUBDIR += rubygem-digest-crc
     SUBDIR += rubygem-doorkeeper
+    SUBDIR += rubygem-doorkeeper43
     SUBDIR += rubygem-doorkeeper-openid_connect
     SUBDIR += rubygem-doorkeeper-rails5
     SUBDIR += rubygem-doorkeeper-rails50
@@ -1141,7 +1150,6 @@
     SUBDIR += rubygem-omniauth-oauth2-generic
     SUBDIR += rubygem-omniauth-saml
     SUBDIR += rubygem-omniauth-shibboleth
-    SUBDIR += rubygem-omniauth-shibboleth12
     SUBDIR += rubygem-openssl
     SUBDIR += rubygem-openssl-ccm
     SUBDIR += rubygem-openvas-omp
@@ -1154,7 +1162,6 @@
     SUBDIR += rubygem-razorback-scriptNugget
     SUBDIR += rubygem-rbnacl
     SUBDIR += rubygem-rbnacl-libsodium
-    SUBDIR += rubygem-rbnacl4
     SUBDIR += rubygem-recog
     SUBDIR += rubygem-rex-arch
     SUBDIR += rubygem-rex-bin_tools
@@ -1211,7 +1218,7 @@
     SUBDIR += sha
     SUBDIR += sha1collisiondetection
     SUBDIR += sha2wordlist
-    SUBDIR += shibboleth2-sp
+    SUBDIR += shibboleth-sp
     SUBDIR += shimmer
     SUBDIR += shishi
     SUBDIR += shttpscanner
@@ -1301,7 +1308,6 @@
     SUBDIR += trinokiller
     SUBDIR += tripwire
     SUBDIR += tripwire-131
-    SUBDIR += tripwire12
     SUBDIR += trousers
     SUBDIR += truecrypt
     SUBDIR += tsshbatch
