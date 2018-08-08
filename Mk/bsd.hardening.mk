@@ -301,7 +301,7 @@ OPTIONS_GROUP_HARDENING+=CFI
 cdcfi_ARGS?=	auto
 
 .if ${cdcfi_ARGS:Mauto}
-.if ${_USE_HARDENING:Mstatic} || ${USE_HARDENING:Msafestack}
+.if ${_USE_HARDENING:Mstatic} || ${USE_HARDENING:Msafestack} || ${USE_HARDENING:Mpie} == ""
 cdcfi_ARGS+=		off
 .else
 USE_HARDENING:=		cdcfi ${USE_HARDENING:Ncdcfi}
