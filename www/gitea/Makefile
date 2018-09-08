@@ -25,6 +25,8 @@ USE_RC_SUBR=	gitea
 SUB_FILES+=	app.ini.sample
 SUB_LIST+=	GITUSER=${USERS}
 
+GO_PIE=		yes
+
 USERS=		git
 GROUPS=		git
 
