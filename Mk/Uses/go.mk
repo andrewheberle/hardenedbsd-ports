@@ -67,6 +67,11 @@ PLIST_SUB+=	GO_LIBDIR=${GO_LIBDIR} \
 		GO_PKGNAME=${GO_PKGNAME}
 
 _USES_POST+=	go
+
+.if defined(GO_PIE)
+GO_BUILDFLAGS+=	-buildmode=pie
+.endif
+
 .endif # !defined(_INCLUDE_USES_GO_MK)
 
 .if defined(_POSTMKINCLUDED) && !defined(_INCLUDE_USES_GO_POST_MK)
