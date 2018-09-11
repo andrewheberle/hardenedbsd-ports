@@ -5338,7 +5338,7 @@ _STAGE_SEQ=		050:stage-message 100:stage-dir 150:run-depends \
 				200:apply-slist 300:pre-install \
 				400:generate-plist 450:pre-su-install 475:create-users-groups \
 				500:do-install 550:kmod-post-install 600:fixup-lib-pkgconfig 700:post-install \
-				750:post-install-script 800:post-stage 850:compress-man \
+				750:post-install-script 800:post-stage 825:hardening-disable 850:compress-man \
 				860:install-rc-script 870:install-ldconfig-file \
 				880:install-license 890:install-desktop-entries \
 				900:add-plist-info 910:add-plist-docs 920:add-plist-examples \
@@ -5350,6 +5350,15 @@ _STAGE_SEQ+=	995:stage-qa
 .else
 stage-qa: stage
 .endif
+
+hardening-disable:
+.for _file in ${PAGEEXEC_DISABLE}
+	/usr/sbin/hbsdcontrol pax disable pageexec ${STAGEDIR}/${PREFIX}/${_file}
+.endfor
+.for _file in ${MPROTECT_DISABLE}
+	/usr/sbin/hbsdcontrol pax disable mprotect ${STAGEDIR}/${PREFIX}/${_file}
+.endfor
+
 _TEST_DEP=		stage
 _TEST_SEQ=		100:test-message 150:test-depends 300:pre-test 500:do-test \
 				800:post-test \

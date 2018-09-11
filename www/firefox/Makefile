@@ -39,6 +39,10 @@ USE_GL=		gl
 USES=		tar:xz
 
 USE_HARDENING=	pie:configure
+MPROTECT_DISABLE=	lib/firefox/firefox \
+			lib/firefox/plugin-container
+PAGEEXEC_DISABLE=	lib/firefox/firefox \
+			lib/firefox/plugin-container
 
 FIREFOX_ICON=		${MOZILLA}.png
 FIREFOX_ICON_SRC=	${PREFIX}/lib/${MOZILLA}/browser/chrome/icons/default/default48.png
