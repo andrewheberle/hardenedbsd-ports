@@ -1056,7 +1056,6 @@
     SUBDIR += hs-haddock-library
     SUBDIR += hs-happy
     SUBDIR += hs-hashable
-    SUBDIR += hs-hashed-storage
     SUBDIR += hs-hashtables
     SUBDIR += hs-haskell-lexer
     SUBDIR += hs-haskell-src
@@ -1857,6 +1856,7 @@
     SUBDIR += ocaml-lacaml
     SUBDIR += ocaml-lwt
     SUBDIR += ocaml-magic
+    SUBDIR += ocaml-ocamlbuild
     SUBDIR += ocaml-opam
     SUBDIR += ocaml-ounit
     SUBDIR += ocaml-parmap
@@ -4021,6 +4021,7 @@
     SUBDIR += pear-XML_Util
     SUBDIR += pear-channel-doctrine
     SUBDIR += pear-channel-ezc
+    SUBDIR += pear-channel-geshi
     SUBDIR += pear-channel-horde
     SUBDIR += pear-channel-htmlpurifier.org
     SUBDIR += pear-channel-openpear
@@ -4352,6 +4353,7 @@
     SUBDIR += py-aspyct
     SUBDIR += py-astor
     SUBDIR += py-astroid
+    SUBDIR += py-astroid1
     SUBDIR += py-asttokens
     SUBDIR += py-async_generator
     SUBDIR += py-async_timeout
@@ -4603,6 +4605,7 @@
     SUBDIR += py-grizzled
     SUBDIR += py-grouch
     SUBDIR += py-grpcio
+    SUBDIR += py-grpcio-gcp
     SUBDIR += py-grpcio-tools
     SUBDIR += py-gtfslib
     SUBDIR += py-gyp
@@ -5043,6 +5046,7 @@
     SUBDIR += py-scripttest
     SUBDIR += py-sdl2
     SUBDIR += py-selection
+    SUBDIR += py-selectors2
     SUBDIR += py-selectors34
     SUBDIR += py-semantic_version
     SUBDIR += py-serpent
@@ -6242,7 +6246,6 @@
     SUBDIR += tijmp
     SUBDIR += tinycbor
     SUBDIR += tinylaf
-    SUBDIR += tinyq
     SUBDIR += tkcon
     SUBDIR += tkcvs
     SUBDIR += tkmerge

@@ -3,12 +3,14 @@
 
 PORTNAME=	lockdown
 PORTVERSION=	2.0.0
+PORTREVISION=	1
 CATEGORIES=	security
 MASTER_SITES=	http://lockdown.trunet.dk/ \
 		http://lockdown.loproc.dk/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Hardening script for FreeBSD
+FORBIDDEN=	Renders system unbootable
 
 USE_LDCONFIG=	yes
 
@@ -16,6 +18,7 @@ WRKSRC=		${WRKDIR}/lockdown
 
 CFLAGS_aarch64+=-fPIC
 CFLAGS_amd64+=	-fPIC
+CFLAGS_i386+=	-fPIC
 
 do-install:
 	${INSTALL_LIB} ${WRKSRC}/cppe/src/libcppe.so ${STAGEDIR}${PREFIX}/lib
