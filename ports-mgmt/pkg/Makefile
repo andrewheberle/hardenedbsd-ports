@@ -12,7 +12,7 @@ COMMENT=	Package manager
 
 LICENSE=	BSD2CLAUSE
 
-USE_HARDENING=	pie:configure
+USE_HARDENING=	pie:configure cfi:off cdcfi:off
 
 USE_LDCONFIG=	yes
 USES=		libtool tar:xz
@@ -27,11 +27,7 @@ PORTSCOUT=	ignore:1
 USE_SUBMAKE=	yes
 CFLAGS+=	-Wno-error
 
-<<<<<<< HEAD
-USE_HARDENING=	pie:configure cfi:off cdcfi:off
-=======
 OPTIONS_DEFINE=	DOCS
->>>>>>> upstream/master
 
 .if !exists(/usr/include/jail.h)
 EXTRA_PATCHES=	${FILESDIR}/extra-patch-docs_pkg.8
