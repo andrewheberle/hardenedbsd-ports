@@ -14,7 +14,6 @@ COMMENT=	SPDY protocol version 2, 3 and 3.1 implementation in C
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BROKEN_SSL=	openssl-devel
 BROKEN_powerpc64=	does not link: undefined reference to 'std::ctype<char>::_M_widen_init()'
 BROKEN_sparc64=	does not build: fails to link
 
@@ -33,6 +32,8 @@ USE_LDCONFIG=	yes
 USES=		compiler:c++11-lang gnome libtool pathfix pkgconfig ssl tar:xz
 
 PORTDOCS=	*
+
+OPTIONS_DEFINE=	DOCS
 
 post-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/examples/spdycli ${STAGEDIR}${PREFIX}/bin/

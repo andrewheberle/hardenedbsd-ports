@@ -25,6 +25,7 @@
     SUBDIR += acm
     SUBDIR += adom
     SUBDIR += adonthell
+    SUBDIR += adonthell-wastesedge
     SUBDIR += aestats
     SUBDIR += affenspiel
     SUBDIR += afternoonstalker
@@ -59,6 +60,7 @@
     SUBDIR += assaultcube
     SUBDIR += asteroid
     SUBDIR += asteroids3d
+    SUBDIR += astromenace
     SUBDIR += asylum
     SUBDIR += atanks
     SUBDIR += atomix
@@ -74,6 +76,7 @@
     SUBDIR += ballerburg
     SUBDIR += banihstypos
     SUBDIR += barbie_seahorse_adventures
+    SUBDIR += barony
     SUBDIR += barrage
     SUBDIR += bass
     SUBDIR += bastet
@@ -93,7 +96,6 @@
     SUBDIR += blinken-kde4
     SUBDIR += blinkensisters
     SUBDIR += blobby
-    SUBDIR += bloboats
     SUBDIR += blobwars
     SUBDIR += block
     SUBDIR += blockade
@@ -177,9 +179,6 @@
     SUBDIR += crack-attack
     SUBDIR += craft
     SUBDIR += crafty
-    SUBDIR += crafty-open-enormous
-    SUBDIR += crafty-open-large
-    SUBDIR += crafty-open-medium
     SUBDIR += crafty-tablebase-no-pawn
     SUBDIR += crashtest
     SUBDIR += cre
@@ -568,7 +567,6 @@
     SUBDIR += lexter
     SUBDIR += lgeneral
     SUBDIR += lianliankan
-    SUBDIR += libdungeonmaker
     SUBDIR += libggz
     SUBDIR += libgnome-games-support
     SUBDIR += libkdegames
@@ -724,6 +722,8 @@
     SUBDIR += oneisenough
     SUBDIR += oneko
     SUBDIR += oneko-sakura
+    SUBDIR += onscripter
+    SUBDIR += onscripter-1byte
     SUBDIR += oolite
     SUBDIR += oonsoo
     SUBDIR += open-adventure
@@ -733,7 +733,6 @@
     SUBDIR += openarena-data
     SUBDIR += openarena-oax
     SUBDIR += openarena-server
-    SUBDIR += openastromenace
     SUBDIR += openbor
     SUBDIR += openbor3482
     SUBDIR += openbor3711
@@ -764,7 +763,6 @@
     SUBDIR += opentyrian
     SUBDIR += openxcom
     SUBDIR += openyahtzee
-    SUBDIR += optimax
     SUBDIR += orbital_eunuchs_sniper
     SUBDIR += osgg
     SUBDIR += outerspace
@@ -818,13 +816,13 @@
     SUBDIR += pokerth
     SUBDIR += polyglot
     SUBDIR += pongix
+    SUBDIR += ponscripter-sekai
     SUBDIR += popstar
     SUBDIR += pouetchess
     SUBDIR += powder
     SUBDIR += powder-toy
     SUBDIR += powermanga
     SUBDIR += powwow
-    SUBDIR += ppracer
     SUBDIR += prboom
     SUBDIR += prboom-plus
     SUBDIR += primateplunge
@@ -902,12 +900,15 @@
     SUBDIR += redeclipse-data
     SUBDIR += redorblack
     SUBDIR += reminiscence
+    SUBDIR += renpy
+    SUBDIR += renpy6
     SUBDIR += rescue
     SUBDIR += residualvm
     SUBDIR += retroarch
     SUBDIR += rezerwar
     SUBDIR += rfksay
     SUBDIR += ri-li
+    SUBDIR += rlvm
     SUBDIR += rnd_jue
     SUBDIR += robocode
     SUBDIR += robocode-naval
@@ -965,7 +966,6 @@
     SUBDIR += slashem-tty
     SUBDIR += slump
     SUBDIR += slune
-    SUBDIR += smashbattle
     SUBDIR += sokoban
     SUBDIR += sol
     SUBDIR += solarconquest
@@ -1006,7 +1006,6 @@
     SUBDIR += supertuxkart
     SUBDIR += swell-foop
     SUBDIR += sxsame
-    SUBDIR += syobon
     SUBDIR += tads
     SUBDIR += taipan
     SUBDIR += taisei
@@ -1042,7 +1041,6 @@
     SUBDIR += toycars
     SUBDIR += trackballs
     SUBDIR += tractorgen
-    SUBDIR += traindirector
     SUBDIR += traingame
     SUBDIR += tremulous
     SUBDIR += trenchbroom
@@ -1092,6 +1090,7 @@
     SUBDIR += violetland
     SUBDIR += viruskiller
     SUBDIR += vitetris
+    SUBDIR += vkquake
     SUBDIR += vms-empire
     SUBDIR += vodovod
     SUBDIR += volleyball
@@ -1159,7 +1158,6 @@
     SUBDIR += xgalaga++
     SUBDIR += xgalaga-sdl
     SUBDIR += xglk
-    SUBDIR += xgospel
     SUBDIR += xhexagons
     SUBDIR += xhime
     SUBDIR += xinfocom

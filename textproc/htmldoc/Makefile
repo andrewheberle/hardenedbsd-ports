@@ -3,7 +3,7 @@
 
 PORTNAME=	htmldoc
 PORTVERSION=	1.8.28
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	textproc
 MASTER_SITES=	https://github.com/michaelrsweet/htmldoc/releases/download/release-${PORTVERSION}/
 DISTNAME=	${PORTNAME}-${PORTVERSION}-source
@@ -13,7 +13,7 @@ COMMENT=	Converts HTML to PDF and/or PostScript
 
 LICENSE=	GPLv2
 
-BROKEN_SSL=	openssl-devel
+BROKEN_SSL=	openssl111
 
 LIB_DEPENDS=	libpng.so:graphics/png
 

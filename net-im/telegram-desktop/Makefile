@@ -2,7 +2,7 @@
 
 PORTNAME=	telegram-desktop
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.2.17
+DISTVERSION=	1.4.2
 PORTREVISION=	1
 CATEGORIES=	net-im
 
@@ -23,16 +23,18 @@ LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libopenal.so:audio/openal-soft \
 		libopus.so:audio/opus
 
-USES=		cmake:noninja,outsource desktop-file-utils gmake pkgconfig python:2.7,build qt:5 ssl
+USES=		compiler:c++17-lang cmake:noninja,outsource desktop-file-utils gmake pkgconfig python:2.7,build qt:5 ssl
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	telegramdesktop
 GH_PROJECT=	tdesktop
 GH_TUPLE=	catchorg:Catch2:5ca44b68:catch/Telegram/ThirdParty/Catch \
 		mapbox:variant:550ac2f:variant/Telegram/ThirdParty/variant \
-		Microsoft:GSL:9d65e74:gsl/Telegram/ThirdParty/GSL \
-		telegramdesktop:libtgvoip:6e0e102:libtgvoip/Telegram/ThirdParty/libtgvoip \
-		telegramdesktop:crl:344cbde9:crl/Telegram/ThirdParty/crl
-USE_GNOME=	glib20 gtk30
+		Microsoft:GSL:d846fe5:gsl/Telegram/ThirdParty/GSL \
+		telegramdesktop:libtgvoip:9b292fd:libtgvoip/Telegram/ThirdParty/libtgvoip \
+		telegramdesktop:crl:4291015:crl/Telegram/ThirdParty/crl \
+		Cyan4973:xxHash:7cc9639:xxhash/Telegram/ThirdParty/xxHash
+USE_GNOME=	glib20
 USE_QT=		core gui imageformats network widgets buildtools_build qmake_build dbus
 USE_XORG=	x11 xcb
 
@@ -45,22 +47,24 @@ GYP_DEFINES=	TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP
 # If both of them are not installed, then voice calls do not work, but other functionalities still work.
 OPTIONS_MULTI=	AUDIO
 OPTIONS_MULTI_AUDIO=	ALSA PULSEAUDIO
+OPTIONS_DEFINE=	GTK
 OPTIONS_DEFAULT=	ALSA
 
 AUDIO_DESC=	Audio backend for voice calls
+GTK_DESC=	Gtk integration (Use Gtk dialogs, etc.)
 
 ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
 PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 
-.include <bsd.port.pre.mk>
+.include <bsd.port.options.mk>
 
-# This port needs C++17 libs/compiler.
-# Currently, this is not supported by USES=compiler
-# Using clang does not work: libc++ in base does not support C++17.
-# Using gcc does not work: using both libc++ and libstdc++ causes crashes.
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
-BROKEN=		Need C++17 support in compiler and runtime
+.if ${PORT_OPTIONS:MGTK}
+USE_GNOME+=	gtk30
+.else
+GYP_DEFINES:=	${GYP_DEFINES},TDESKTOP_DISABLE_GTK_INTEGRATION
 .endif
+
+.include <bsd.port.pre.mk>
 
 post-patch:
 	@cd ${WRKSRC} && \

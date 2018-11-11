@@ -32,7 +32,7 @@ DISTFILES=	binutils-2.25.1.tar.bz2:source1 \
 		newlib-2.2.0.tar.gz:source10
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
-MAINTAINER=	leres@freebsd.org
+MAINTAINER=	leres@FreeBSD.org
 COMMENT=	Espressif ESP32 toolchain
 
 LICENSE=	GPLv2 LGPL21
@@ -55,7 +55,7 @@ BUILD_DEPENDS=	bash:shells/bash \
 
 NO_MTREE=	yes
 USES=		autoreconf:build bison gmake libtool python
-USE_GCC=	yes
+USE_GCC=	7
 USE_GITHUB=	yes
 USE_LDCONFIG=	${PREFIX}/${PORTNAME}/libexec/gcc/${PORTNAME}/5.2.0
 SUBDIR=		crosstool-NG

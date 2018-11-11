@@ -3,6 +3,7 @@
 
 PORTNAME=	nsca-ng
 PORTVERSION=	1.4
+PORTREVISION=	1
 CATEGORIES=	net-mgmt
 MASTER_SITES=	https://www.nsca-ng.org/download/ http://www.nsca-ng.org/download/
 
@@ -34,6 +35,8 @@ CONFIGURE_ARGS+=	--enable-server
 .endif
 
 PORTDOCS=	NEWS COPYING README PROTOCOL TODO
+
+OPTIONS_DEFINE=	DOCS EXAMPLES
 
 .include <bsd.port.pre.mk>
 

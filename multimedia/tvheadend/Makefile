@@ -2,19 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	tvheadend
-PORTVERSION=	4.2.6
+PORTVERSION=	4.2.7
 DISTVERSIONPREFIX=	v
-PORTREVISION=	4
+PORTREVISION=	2
 CATEGORIES=	multimedia
-
-PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
-PATCHFILES=	3cb4f580565b.patch:-p1
 
 MAINTAINER=	decke@FreeBSD.org
 COMMENT=	TV streaming server supporting DVB, IPTV, SAT>IP and more
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE.md
+
+USE_HARDENING=	pie:off
 
 BUILD_DEPENDS=	bash:shells/bash \
 		cmake:devel/cmake \
@@ -23,13 +22,7 @@ LIB_DEPENDS=	libcurl.so:ftp/curl \
 		liburiparser.so:net/uriparser
 RUN_DEPENDS=	dtv-scan-tables>=0:multimedia/dtv-scan-tables
 
-BROKEN_mips=		fails to configure: No C compiler found
-BROKEN_mips64=		fails to configure: No C compiler found
-BROKEN_powerpc64=	fails to configure: No C compiler found
-
-USE_HARDENING=	pie:off
-
-USES=		gettext gmake pkgconfig python shebangfix ssl
+USES=		compiler:c++11-lang gettext gmake pkgconfig python shebangfix ssl
 USE_GITHUB=	yes
 
 GNU_CONFIGURE=	yes

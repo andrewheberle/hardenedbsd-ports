@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gstreamer1-libav
-PORTVERSION=	1.12.3
-PORTREVISION=	2
+PORTVERSION=	1.14.4
+PORTREVISION=	1
 CATEGORIES=	multimedia
 MASTER_SITES=	http://gstreamer.freedesktop.org/src/gst-libav/
 DISTNAME=	gst-libav-${PORTVERSION}
@@ -26,6 +26,7 @@ USE_GSTREAMER1=	yes
 USE_GNOME=	glib20
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
+CFLAGS_powerpc64=	-mminimal-toc
 
 OPTIONS_DEFINE=	FFMPEG
 

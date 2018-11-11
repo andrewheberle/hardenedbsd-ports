@@ -2,9 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	chromium
-PORTVERSION=	68.0.3440.84
+PORTVERSION=	68.0.3440.106
+PORTREVISION=	6
 CATEGORIES?=	www
-MASTER_SITES=	https://commondatastorage.googleapis.com/chromium-browser-official/
+MASTER_SITES=	https://commondatastorage.googleapis.com/chromium-browser-official/ \
+		LOCAL/cpm/chromium/:fonts
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER?=	chromium@FreeBSD.org
@@ -67,10 +69,11 @@ ONLY_FOR_ARCHS=			aarch64 amd64 i386
 .endif
 
 .if defined(GN_ONLY)
-USES=		compiler:c++14-lang ninja pkgconfig python:2.7,build shebangfix tar:xz
-.else
-USES=		bison cpe desktop-file-utils jpeg ninja perl5 pkgconfig \
+USES=		compiler:c++14-lang localbase:ldflags ninja pkgconfig \
 		python:2.7,build shebangfix tar:xz
+.else
+USES=		bison cpe desktop-file-utils gnome jpeg localbase:ldflags \
+		ninja perl5 pkgconfig python:2.7,build shebangfix tar:xz
 .endif
 MAKE_ARGS=	-C out/${BUILDTYPE}
 BINARY_ALIAS=	python=${PYTHON_CMD}
@@ -118,8 +121,8 @@ GN_ARGS+=	clang_use_chrome_plugins=false \
 		use_system_freetype=true \
 		use_system_harfbuzz=true \
 		use_system_libjpeg=true \
-		extra_cxxflags="-I${LOCALBASE}/include" \
-		extra_ldflags="-L${LOCALBASE}/lib"
+		extra_cxxflags="${CXXFLAGS}" \
+		extra_ldflags="${LDFLAGS}"
 # TODO: investigate building with these options:
 # use_system_minigbm
 GN_BOOTSTRAP_FLAGS=	--no-clean --no-rebuild
@@ -135,7 +138,7 @@ GN_ARGS+=	google_api_key="AIzaSyBsp9n41JLW8jCokwn7vhoaMejDFRd1mp8" \
 USE_HARDENING=	relro:off
 
 .if !defined(GN_ONLY)
-SUB_FILES=	chromium-browser.desktop chrome
+SUB_FILES=	chromium-browser.desktop chrome pkg-message
 SUB_LIST+=	COMMENT="${COMMENT}"
 
 OPTIONS_DEFINE=	CODECS CUPS DEBUG DRIVER KERBEROS TEST
@@ -168,13 +171,13 @@ DEBUG_VARS=		BUILDTYPE=Debug \
 			GN_ARGS+=is_debug=true \
 			GN_ARGS+=is_component_build=false \
 			GN_BOOTSTRAP_FLAGS+=--debug \
-			WANTSPACE="lots of free disk space (~ 12GB)"
+			WANTSPACE="lots of free disk space (~ 13GB)"
 DEBUG_VARS_OFF=		BUILDTYPE=Release \
 			GN_ARGS+=is_debug=false \
 			GN_ARGS+=is_official_build=true \
 			GN_ARGS+=symbol_level=0 \
 			GN_ARGS+=remove_webcore_debug_symbols=true \
-			WANTSPACE="a fair amount of free disk space (~ 5.8GB)"
+			WANTSPACE="a fair amount of free disk space (~ 6.5GB)"
 
 DRIVER_BUILD_DEPENDS=	git:devel/git
 DRIVER_MAKE_ARGS=	chromedriver
@@ -198,19 +201,13 @@ SNDIO_VARS_OFF=		GN_ARGS+=use_sndio=false
 
 .include "Makefile.tests"
 TEST_ALL_TARGET=	${TEST_TARGETS}
-TEST_DISTFILES=		${PORTNAME}-${DISTVERSION}-testdata${EXTRACT_SUFX}
+TEST_DISTFILES=		${PORTNAME}-${DISTVERSION}-testdata${EXTRACT_SUFX} \
+			test_fonts${EXTRACT_SUFX}:fonts
 
 .include <bsd.port.options.mk>
 
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1101513
-BUILD_DEPENDS+=	clang60:devel/llvm60
-CC=             clang60
-CXX=            clang++60
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-llvm-port
-.else
 BUILD_DEPENDS+=	${LOCALBASE}/bin/ar:devel/binutils
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-llvm-base
-.endif
 
 # TODO: -isystem, would be just as ugly as this approach, but more reliably
 # build would fail without C_INCLUDE_PATH/CPLUS_INCLUDE_PATH env var set.
@@ -223,6 +220,10 @@ pre-everything::
 	@${ECHO_MSG} "To build Chromium, you should have around 2GB of memory"
 	@${ECHO_MSG} "and ${WANTSPACE}."
 	@${ECHO_MSG}
+
+post-extract-TEST-on:
+	@${MKDIR} ${WRKSRC}/third_party/test_fonts/test_fonts
+	@${MV} ${WRKDIR}/test_fonts ${WRKSRC}/third_party/test_fonts/
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|@@PACKAGE@@|chromium|' \
@@ -291,15 +292,18 @@ do-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/chrome ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_SCRIPT} ${WRKSRC}/chrome/tools/build/linux/chrome-wrapper \
 		${STAGEDIR}${DATADIR}
+
+	# ANGLE
 .for f in libEGL.so libGLESv2.so
 	${INSTALL_LIB} ${WRKSRC}/out/${BUILDTYPE}/${f} ${STAGEDIR}${DATADIR}
 .endfor
+
+	# SwiftShader
 	@${MKDIR} ${STAGEDIR}${DATADIR}/swiftshader
 .for g in libEGL.so libGLESv2.so
 	${INSTALL_LIB} ${WRKSRC}/out/${BUILDTYPE}/swiftshader/${g} \
 		${STAGEDIR}${DATADIR}/swiftshader
 .endfor
-	${INSTALL_SCRIPT} ${FILESDIR}/fix-hanging-tabs.sh ${STAGEDIR}${DATADIR}
 
 post-install-DEBUG-on:
 	${INSTALL_LIB} ${WRKSRC}/out/${BUILDTYPE}/*.so \
@@ -311,4 +315,5 @@ post-install-DRIVER-on:
 	${INSTALL_PROGRAM} ${WRKSRC}/out/${BUILDTYPE}/chromedriver \
 		${STAGEDIR}${PREFIX}/bin
 .endif
+
 .include <bsd.port.mk>

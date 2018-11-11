@@ -1,14 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	skrooge
-DISTVERSION=	2.14.0
-PORTREVISION=	1
+DISTVERSION=	2.16.2
 CATEGORIES=	finance kde
 MASTER_SITES=	KDE/stable/${PORTNAME}
 DIST_SUBDIR=	KDE/${PORTNAME}
 
 MAINTAINER=	kde@FreeBSD.org
-COMMENT=	KDE personal finance manager
+COMMENT=	Personal finance manager
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
@@ -29,8 +28,8 @@ USE_KDE=	activities archive attica5 auth bookmarks codecs completion \
 		package parts plasma-framework runner service solid sonnet \
 		textwidgets unitconversion wallet widgetsaddons windowsystem \
 		xmlgui
-USE_QT=		concurrent core dbus designer gui network printsupport qml \
-		quick script sql svg webkit widgets xml \
+USE_QT=		concurrent core dbus declarative designer gui network printsupport \
+		script sql svg webkit widgets xml \
 		qmake_build buildtools_build
 SHEBANG_FILES=	plugins/import/skrooge_import_backend/skrooge-sabb.py \
 		skgbankmodeler/skrooge-coinmarketcap.py \

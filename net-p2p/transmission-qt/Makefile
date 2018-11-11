@@ -1,5 +1,6 @@
 # $FreeBSD$
 
+PORTREVISION=	1
 PKGNAMESUFFIX=	-${FLAVOR}
 
 LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
@@ -26,6 +27,8 @@ USE_QT=		buildtools_build linguisttools_build qmake_build \
 		core dbus gui network widgets
 CMAKE_ON=	USE_QT5
 .endif
+
+USES+=		compiler:c++11-lang
 
 MASTERDIR=	${.CURDIR}/../transmission-cli
 DESCR=		${.CURDIR}/pkg-descr

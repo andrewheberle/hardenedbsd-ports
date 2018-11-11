@@ -28,8 +28,8 @@ CONFIGURE_ARGS=		--prefix=${PREFIX} --with-md5-passwords \
 
 ETCOLD=			${PREFIX}/etc
 
-BROKEN_SSL=	openssl-devel
-BROKEN_SSL_REASON_openssl-devel=	error: OpenSSL >= 1.1.0 is not yet supported
+BROKEN_SSL=	openssl111
+BROKEN_SSL_REASON_openssl111=	error: OpenSSL >= 1.1.0 is not yet supported
 
 FLAVORS=			default hpn
 default_CONFLICTS_INSTALL=	openssl-portable-hpn
@@ -41,6 +41,7 @@ OPTIONS_DEFINE=		PAM TCP_WRAPPERS LIBEDIT BSM \
 			LDNS NONECIPHER XMSS
 OPTIONS_DEFAULT=	LIBEDIT PAM TCP_WRAPPERS LDNS
 .if ${FLAVOR:U} == hpn
+OPTIONS_DEFINE+=	DOCS
 OPTIONS_DEFAULT+=	HPN NONECIPHER
 .endif
 OPTIONS_RADIO=		KERBEROS

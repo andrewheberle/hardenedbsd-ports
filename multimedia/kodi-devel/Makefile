@@ -1,20 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	kodi
-DISTVERSION=	18.0.g201807222249
-PORTREVISION=	1
 CATEGORIES=	multimedia
+DISTVERSION=	18.0.g201811032038
+PORTREVISION=	1
 PKGNAMESUFFIX?=	-devel
 
 MAINTAINER=	tobik@FreeBSD.org
 COMMENT=	Award winning media center application
 
-LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/copying.txt
+LICENSE=	GPLv2+
 
 ONLY_FOR_ARCHS=	amd64 armv6 armv7 i386
 
-BUILD_DEPENDS=	rapidjson>=0:devel/rapidjson \
+BUILD_DEPENDS=	flatbuffers>=0:devel/flatbuffers \
+		rapidjson>=0:devel/rapidjson \
 		swig3.0:devel/swig30
 LIB_DEPENDS=	libass.so:multimedia/libass \
 		libavcodec.so:multimedia/ffmpeg \
@@ -30,6 +30,7 @@ LIB_DEPENDS=	libass.so:multimedia/libass \
 		libfmt.so:devel/libfmt \
 		libfreetype.so:print/freetype2 \
 		libfribidi.so:converters/fribidi \
+		libfstrcmp.so:devel/fstrcmp \
 		libgif.so:graphics/giflib \
 		libgnutls.so:security/gnutls \
 		liblcms2.so:graphics/lcms2 \
@@ -49,12 +50,12 @@ LIB_DEPENDS=	libass.so:multimedia/libass \
 # leads to dependency problems where libcpluff.a is not yet finished
 # building when it's required.
 USES=		autoreconf:build cmake:outsource,noninja compiler:c++11-lib \
-		gettext gmake iconv:wchar_t jpeg libtool pkgconfig python:2.7 \
-		ssl sqlite
+		gettext gmake gnome iconv:wchar_t jpeg libtool pkgconfig \
+		python:2.7 ssl sqlite
 USE_GITHUB=	yes
 GH_ACCOUNT=	xbmc
 GH_PROJECT=	xbmc
-GH_TAGNAME=	64a79f3e8c1cc1af0b8dc4f645e60f6c889e3667
+GH_TAGNAME=	18.0b5-Leia
 USE_GNOME=	libxslt libxml2
 USE_JAVA=	yes
 JAVA_BUILD=	yes
@@ -105,9 +106,13 @@ CEC_CMAKE_BOOL=		ENABLE_CEC
 DBUS_LIB_DEPENDS=	libdbus-1.so:devel/dbus
 DBUS_CMAKE_BOOL=	ENABLE_DBUS
 
-GBM_BUILD_DEPENDS=	v4l_compat>=0:multimedia/v4l_compat
-GBM_CMAKE_ON=		-DCORE_PLATFORM_NAME:STRING="gbm"
-GBM_LIB_DEPENDS=	libinput.so:x11/libinput \
+GBM_CMAKE_ON=		-DCORE_PLATFORM_NAME:STRING="gbm" \
+			-DGBM_RENDER_SYSTEM:STRING="gl"
+GBM_CFLAGS=		-I${LOCALBASE}/include/libepoll-shim \
+			-I${WRKDIR}/evdev-proto
+GBM_LDFLAGS=		-L${LOCALBASE}/lib -lepoll-shim -lpthread -lrt
+GBM_LIB_DEPENDS=	libepoll-shim.so:devel/libepoll-shim \
+			libinput.so:x11/libinput \
 			libxkbcommon.so:x11/libxkbcommon
 
 LIBBLURAY_LIB_DEPENDS=	libbluray.so:multimedia/libbluray
@@ -129,6 +134,7 @@ RPI_CMAKE_ON=		-DCORE_PLATFORM_NAME:STRING="rbpi"
 RPI_LIB_DEPENDS=	libbrcmEGL.so:misc/raspberrypi-userland
 RPI_LIB_DEPENDS_OFF=	libdrm.so:graphics/libdrm
 RPI_PREVENTS=		VAAPI VDPAU
+RPI_USES_OFF=		gl
 RPI_USE_OFF=		GL=egl,gl,glu
 
 SMB_USES=		samba:lib
@@ -158,8 +164,8 @@ VAAPI_LIB_DEPENDS=	libva.so:multimedia/libva
 VDPAU_CMAKE_BOOL=	ENABLE_VDPAU
 VDPAU_LIB_DEPENDS=	libvdpau.so:multimedia/libvdpau
 
-WAYLAND_BUILD_DEPENDS=	v4l_compat>=0:multimedia/v4l_compat \
-			wayland-protocols>=0:graphics/wayland-protocols
+WAYLAND_BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols
+WAYLAND_CFLAGS=		-I${WRKDIR}/evdev-proto
 WAYLAND_CMAKE_ON=	-DCORE_PLATFORM_NAME:STRING="wayland" \
 			-DWAYLAND_RENDER_SYSTEM:STRING="gl"
 WAYLAND_LIB_DEPENDS=	libinput.so:x11/libinput \
@@ -178,6 +184,15 @@ X11_USE=		XORG=x11,xext,xrandr
 .if ${SLAVE_PORT} == no
 PORTDATA=	*
 .endif
+
+# Avoid patching evdev header locations (too much pointless churn)
+post-extract-GBM-on:
+	@${MKDIR} ${WRKDIR}/evdev-proto/linux
+	@${CP} /usr/include/dev/evdev/* ${WRKDIR}/evdev-proto/linux
+
+post-extract-WAYLAND-on:
+	@${MKDIR} ${WRKDIR}/evdev-proto/linux
+	@${CP} /usr/include/dev/evdev/* ${WRKDIR}/evdev-proto/linux
 
 post-patch:
 # Do not try to download dvdnav/dvdread during the build, instead

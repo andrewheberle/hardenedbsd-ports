@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	nano
-PORTVERSION=	2.9.8
+PORTVERSION=	3.1
+PORTREVISION=	1
 CATEGORIES=	editors
 MASTER_SITES=	http://www.nano-editor.org/dist/v${PORTVERSION:R}/ GNU
 
@@ -11,9 +12,10 @@ COMMENT=	Nano's ANOther editor, an enhanced free Pico clone
 
 LICENSE=	GPLv3
 
+USES=		charsetfix ncurses
+
 CONFLICTS=	nano-devel-2*
 
-USES=		charsetfix ncurses
 GNU_CONFIGURE=	yes
 
 USE_HARDENING=	safestack

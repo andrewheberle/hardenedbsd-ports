@@ -23,14 +23,26 @@ BUTARGET=	${TARGETARCH}-unknown-${OPSYS:tl}${OSREL}
 
 CONFIGURE_ARGS+=	--disable-host-shared
 PREFIX=	/usr
+BUREMOVE=	addr2line \
+		ar \
+		c++filt \
+		dlltool \
+		elfedit \
+		gprof \
+		nlmconv \
+		nm \
+		ranlib \
+		readelf \
+		size \
+		strings \
+		strip \
+		windmc \
+		windres
 
 .include "${MASTERDIR}/Makefile"
 
-.if ${OSVERSION} >= 1100100
 PLIST_SUB+=	OBJCOPY="@comment "
-.else
-PLIST_SUB+=	OBJCOPY=""
-.endif
+BUREMOVE+=	objcopy
 
 .if ${ARCH} == "amd64" || ${ARCH} == "i386"
 PLIST_SUB+=	I386=""

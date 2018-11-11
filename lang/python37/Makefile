@@ -2,7 +2,6 @@
 # $FreeBSD$
 
 PORTNAME=	python
-PORTREVISION=	2
 PORTVERSION=	${PYTHON_PORTVERSION}
 CATEGORIES=	lang python ipv6
 MASTER_SITES=	PYTHON/ftp/python/${PORTVERSION}
@@ -37,7 +36,6 @@ TEST_TARGET=		buildbottest
 TEST_ARGS=		TESTOPTS=-j${MAKE_JOBS_NUMBER}
 
 MAKE_ARGS+=		INSTALL_SHARED="${INSTALL_LIB}"				# Strip shared library
-MAKE_JOBS_UNSAFE=	yes							# Parser/pgen build bug. See Issue: 200622, 201974
 
 SUB_FILES=		pkg-message
 SUB_LIST=		PYTHON_SUFFIX=${PYTHON_SUFFIX}
@@ -48,8 +46,8 @@ PLIST_SUB=		ABI=${ABIFLAGS} \
 			XYZDOT=${PORTVERSION} \
 			OSMAJOR=${OSVERSION:C/([0-9]*)[0-9]{5}/\1/}		# For plat-freebsd* in pkg-plist. https://bugs.python.org/issue19554
 
-OPTIONS_DEFINE=		DEBUG IPV6 LIBFFI NLS PYMALLOC THREADS
-OPTIONS_DEFAULT=	LIBFFI PYMALLOC THREADS
+OPTIONS_DEFINE=		DEBUG IPV6 LIBFFI NLS PYMALLOC
+OPTIONS_DEFAULT=	LIBFFI PYMALLOC
 OPTIONS_RADIO=		HASH
 OPTIONS_RADIO_HASH=	FNV SIPHASH
 OPTIONS_SUB=		yes
@@ -80,9 +78,6 @@ NLS_LIBS=		-L${LOCALBASE}/lib -lintl
 NLS_CONFIGURE_ENV_OFF=	ac_cv_lib_intl_textdomain=no ac_cv_header_libintl_h=no
 
 PYMALLOC_CONFIGURE_WITH=	pymalloc
-
-THREADS_CONFIGURE_WITH=	threads
-THREADS_LDFLAGS=	-lpthread
 
 .include "${.CURDIR}/Makefile.version"
 .include <bsd.port.options.mk>
@@ -117,23 +112,6 @@ PLIST_SUB+=	NO_NIS="@comment "
 DISABLED_EXTENSIONS+=	nis
 .else
 PLIST_SUB+=	NO_NIS=""
-.endif
-
-# python37 fails to build ssl module on FreeBSD10 with base SSL because X509_VERIFY_PARAM_set1_host check fails.
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000 && ${SSL_DEFAULT} == base
-PLIST_SUB+=	NO_SSL="@comment "
-WARNING+=	"No SSL support for FreeBSD ${OSREL} with base SSL! OpenSSL must be greater than/equal to 1.0.2"
-.else
-PLIST_SUB+=	NO_SSL=""
-.endif
-
-post-patch:
-# readline shared library is present on base before FreeBSD 11 - r268461
-# force setup.py ignore base and use readline from ports
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
-	@${REINPLACE_CMD} -e \
-		"s|lib_dirs,\ \'readline\'|[\'${LOCALBASE}/lib\',\ \'.\'],\ \'readline\'|" \
-		${WRKSRC}/setup.py
 .endif
 
 post-install:

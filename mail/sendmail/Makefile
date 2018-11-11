@@ -2,7 +2,7 @@
 
 PORTNAME=	sendmail
 PORTVERSION=	8.15.2
-PORTREVISION=	11
+PORTREVISION=	12
 CATEGORIES=	mail ipv6
 MASTER_SITES=	ftp://ftp.sendmail.org/pub/sendmail/
 DISTNAME=	${PORTNAME}.${PORTVERSION}
@@ -49,7 +49,6 @@ OPTIONS_DEFINE?=	SHMEM SEM LA NIS IPV6 TLS SASL SASLAUTHD LDAP BDB \
 			PICKY_HELO_CHECK MILTER DOCS
 OPTIONS_DEFAULT?=	SHMEM SEM LA NIS TLS SASL SASLAUTHD BDB1 \
 			BLACKLISTD PICKY_HELO_CHECK MILTER
-OPTIONS_EXCLUDE_FreeBSD_10=	BLACKLISTD
 NO_OPTIONS_SORT=yes
 SHMEM_DESC=		System V shared memory support
 LA_DESC=		load averages support
@@ -166,14 +165,14 @@ do-configure:
 .if ${PORT_OPTIONS:MGDBM}
 	@(if [ ! -e "${LOCALBASE}/lib/libgdbm_compat.so" ] ; then \
 	  ${ECHO_MSG} "===> option COMPAT is missing in databases/gdbm."; \
-          ${FALSE}; \
-          fi)
+	  ${FALSE}; \
+	  fi)
 .endif
 .if ${PORT_OPTIONS:MBLACKLISTD}
 	@(if [ ! -e "${DESTDIR}/usr/lib/libblacklist.so" ] ; then \
 	  ${ECHO_MSG} "===> libblacklist.so not found. Please update to FreeBSD 11"; \
-          ${FALSE}; \
-          fi)
+	  ${FALSE}; \
+	  fi)
 .endif
 	${REINPLACE_CMD} ${SED_SCRIPT} ${WRKSRC}/devtools/OS/FreeBSD
 	${SED} -e "s=%%PREFIX%%=${PREFIX}=g" \

@@ -27,6 +27,13 @@ OPTIONS_DEFINE=	DOCS
 
 WRKSRC=	${WRKDIR}/nget-${PORTVERSION}
 
+.include <bsd.port.pre.mk>
+
+.if ${ARCH:Mmips*} || ${ARCH:Mpowerpc*} || ${ARCH} == sparc64
+CXXFLAGS+=	-std=c++11
+.else
+CXXFLAGS+=	-std=c++98
+.endif
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/nget ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_PROGRAM} ${WRKSRC}/ngetlite ${STAGEDIR}${PREFIX}/bin
@@ -39,4 +46,4 @@ do-install-DOCS-on:
 	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}
 .endfor
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

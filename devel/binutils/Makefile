@@ -3,7 +3,7 @@
 
 PORTNAME=	binutils
 PORTVERSION=	2.30
-PORTREVISION=	4
+PORTREVISION=	5
 PORTEPOCH?=	1
 CATEGORIES?=	devel
 MASTER_SITES=	SOURCEWARE/binutils/releases
@@ -46,7 +46,7 @@ BUTARGET?=	${PKGNAMEPREFIX}unknown-${OPSYS:tl}${OSREL}
 .endif
 PLIST_SUB=	BUTARGET=${BUTARGET}
 OPTIONS_EXCLUDE=	NLS
-INFO_PATH=	${PKGNAMEPREFIX:S/-$//}/info
+INFO_PATH=	${PKGNAMEPREFIX:S/-$//}/share/info
 CONFIGURE_ARGS+=	--disable-shared \
 			--target=${BUTARGET}
 .else
@@ -145,11 +145,15 @@ post-install:
 	${MV} ${STAGEDIR}/${MANDIR}1/objdump.1 ${STAGEDIR}/${MANDIR}1/${BUTARGET}-objdump.1
 	${GZIP_CMD} ${STAGEDIR}/${MANDIR}1/${BUTARGET}-objdump.1
 	${LN} -fs ${BUTARGET}-objdump.1.gz ${STAGEDIR}/${MANDIR}1/objdump.1.gz
+	@${RM} -r ${STAGEDIR}${PREFIX}/include
+	@${RM} -r ${STAGEDIR}${PREFIX}/lib
 .endif
 .endif
 .for tool in ${BUREMOVE}
 	@${RM} ${STAGEDIR}${PREFIX}/bin/${BUTARGET}-${tool} \
-	    ${STAGEDIR}${PREFIX}/man/man1/${BUTARGET}-${tool}.1 \
+	    ${STAGEDIR}${PREFIX}/bin/${tool} \
+	    ${STAGEDIR}${MANPREFIX}/man/man1/${BUTARGET}-${tool}.1 \
+	    ${STAGEDIR}${MANPREFIX}/man/man1/${tool}.1 \
 	    ${STAGEDIR}${PREFIX}/${BUTARGET}/bin/${tool}
 .endfor
 .if defined(BUREMOVE) && ${BUREMOVE:Mld}

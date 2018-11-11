@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	sslscan
-PORTVERSION=	1.11.10
-DISTVERSIONSUFFIX=	-${GH_ACCOUNT}
+DISTVERSION=	1.11.11-16
+DISTVERSIONSUFFIX=  -g96ad4ff
 CATEGORIES=	security
 
 MAINTAINER=	gavin@FreeBSD.org
@@ -32,8 +32,8 @@ UNSAFESSL_ALL_TARGET=	sslscan
 
 .include <bsd.port.pre.mk>
 
-.if empty(PORT_OPTIONS:MUNSAFESSL) && ${SSL_DEFAULT:Mopenssl-devel}
-BROKEN=		Does not build with openssl-devel
+.if empty(PORT_OPTIONS:MUNSAFESSL) && ${SSL_DEFAULT:Mopenssl111}
+BROKEN=		Does not build with openssl111
 .endif
 
 .include <bsd.port.post.mk>

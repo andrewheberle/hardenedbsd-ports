@@ -2,7 +2,7 @@
 
 PORTNAME=	pkg
 DISTVERSION=	1.10.5
-PORTREVISION=	1
+PORTREVISION=	5
 _PKG_VERSION=	${DISTVERSION}
 CATEGORIES=	ports-mgmt
 MASTER_SITES=	http://distsets.hardenedbsd.org/
@@ -12,6 +12,8 @@ COMMENT=	Package manager
 
 LICENSE=	BSD2CLAUSE
 
+USE_HARDENING=	pie:configure
+
 USE_LDCONFIG=	yes
 USES=		libtool tar:xz
 GNU_CONFIGURE=	yes
@@ -20,15 +22,16 @@ INSTALL_TARGET=	install-strip
 PORTDOCS=	NEWS
 PORTSCOUT=	ignore:1
 
-CONFIGURE_ARGS+= \
-	--disable-silent-rules
-
 # Use a submake as 'deinstall install' needs to reevaluate PKG_CMD
 # so that pkg-static is used from the wrkdir
 USE_SUBMAKE=	yes
 CFLAGS+=	-Wno-error
 
+<<<<<<< HEAD
 USE_HARDENING=	pie:configure cfi:off cdcfi:off
+=======
+OPTIONS_DEFINE=	DOCS
+>>>>>>> upstream/master
 
 .if !exists(/usr/include/jail.h)
 EXTRA_PATCHES=	${FILESDIR}/extra-patch-docs_pkg.8
@@ -81,9 +84,11 @@ PKG_BIN=	${WRKSRC}/src/pkg-static
 .endif
 
 post-install:
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/NEWS ${STAGEDIR}${DOCSDIR}/NEWS
 	@${MV} ${STAGEDIR}${PREFIX}/lib/libpkg_static.a \
 		${STAGEDIR}${PREFIX}/lib/libpkg.a
+
+post-install-DOCS-on:
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/NEWS ${STAGEDIR}${DOCSDIR}/NEWS
 
 .include <bsd.port.post.mk>

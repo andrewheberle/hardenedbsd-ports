@@ -10,6 +10,7 @@
     SUBDIR += abby
     SUBDIR += acidrip
     SUBDIR += aegisub
+    SUBDIR += aom
     SUBDIR += aravis
     SUBDIR += asdcplib
     SUBDIR += assimp
@@ -25,6 +26,7 @@
     SUBDIR += avidemux-qt4
     SUBDIR += avinfo
     SUBDIR += baka-mplayer
+    SUBDIR += bcmatroska2
     SUBDIR += bino
     SUBDIR += bitstream
     SUBDIR += blind
@@ -39,6 +41,7 @@
     SUBDIR += clive
     SUBDIR += clutter-gst
     SUBDIR += clutter-gst3
+    SUBDIR += cmrt
     SUBDIR += cuse4bsd-kmod
     SUBDIR += cx88
     SUBDIR += deforaos-player
@@ -83,6 +86,7 @@
     SUBDIR += gmerlin
     SUBDIR += gmerlin-avdecoder
     SUBDIR += gmimms
+    SUBDIR += gmmlib
     SUBDIR += gmp-api
     SUBDIR += gmtk
     SUBDIR += gnome-mplayer
@@ -125,6 +129,7 @@
     SUBDIR += gstreamer1-libav
     SUBDIR += gstreamer1-plugins
     SUBDIR += gstreamer1-plugins-all
+    SUBDIR += gstreamer1-plugins-aom
     SUBDIR += gstreamer1-plugins-assrender
     SUBDIR += gstreamer1-plugins-bad
     SUBDIR += gstreamer1-plugins-core
@@ -143,7 +148,6 @@
     SUBDIR += gstreamer1-plugins-openh264
     SUBDIR += gstreamer1-plugins-resindvd
     SUBDIR += gstreamer1-plugins-rtmp
-    SUBDIR += gstreamer1-plugins-schroedinger
     SUBDIR += gstreamer1-plugins-smoothstreaming
     SUBDIR += gstreamer1-plugins-theora
     SUBDIR += gstreamer1-plugins-ttml
@@ -171,8 +175,8 @@
     SUBDIR += kamoso
     SUBDIR += kdemultimedia
     SUBDIR += kdemultimedia-ffmpegthumbs
-    SUBDIR += kdemultimedia-kde4
     SUBDIR += kdemultimedia-ffmpegthumbs-kde4
+    SUBDIR += kdemultimedia-kde4
     SUBDIR += kdemultimedia-mplayerthumbs-kde4
     SUBDIR += kdenlive
     SUBDIR += kdenlive-kde4
@@ -180,6 +184,7 @@
     SUBDIR += kissdx
     SUBDIR += kmplayer-kde4
     SUBDIR += kodi
+    SUBDIR += kodi-addon-peripheral-joystick
     SUBDIR += kodi-addon-pvr-hts
     SUBDIR += kodi-addon-pvr-iptvsimple
     SUBDIR += kodi-devel
@@ -225,6 +230,8 @@
     SUBDIR += libv4l
     SUBDIR += libva
     SUBDIR += libva-intel-driver
+    SUBDIR += libva-intel-hybrid-driver
+    SUBDIR += libva-intel-media-driver
     SUBDIR += libva-utils
     SUBDIR += libva-vdpau-driver
     SUBDIR += libvdpau
@@ -282,13 +289,14 @@
     SUBDIR += mpv
     SUBDIR += msdl
     SUBDIR += msopenh264
-    SUBDIR += msx264
+    SUBDIR += mswebrtc
     SUBDIR += mxflib
     SUBDIR += mythtv
     SUBDIR += mythtv-frontend
     SUBDIR += naludump
     SUBDIR += nordlicht
     SUBDIR += nostt
+    SUBDIR += obs-qtwebkit
     SUBDIR += obs-studio
     SUBDIR += oggvideotools
     SUBDIR += ogmrip
@@ -330,6 +338,8 @@
     SUBDIR += ptx-kmod
     SUBDIR += pwcbsd
     SUBDIR += pwcview
+    SUBDIR += py-PySceneDetect
+    SUBDIR += py-av
     SUBDIR += py-cec
     SUBDIR += py-enzyme
     SUBDIR += py-flvlib
@@ -346,7 +356,6 @@
     SUBDIR += py-openlp
     SUBDIR += py-periscope
     SUBDIR += py-pretty_midi
-    SUBDIR += py-PySceneDetect
     SUBDIR += py-qt4-multimedia
     SUBDIR += py-qt4-phonon
     SUBDIR += py-qt5-multimedia
@@ -395,6 +404,7 @@
     SUBDIR += snappy
     SUBDIR += spigot
     SUBDIR += spook
+    SUBDIR += subtitlecomposer
     SUBDIR += subtitlecomposer-kde4
     SUBDIR += subtitleeditor
     SUBDIR += subtitleoffsetmodifier
@@ -452,6 +462,7 @@
     SUBDIR += vid.stab
     SUBDIR += vlc
     SUBDIR += vlc-qt4
+    SUBDIR += vlc3
     SUBDIR += vtkmpeg2encode
     SUBDIR += w_scan
     SUBDIR += webcamd

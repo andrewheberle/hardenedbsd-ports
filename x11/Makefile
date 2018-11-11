@@ -29,6 +29,7 @@
     SUBDIR += bricons
     SUBDIR += brightside
     SUBDIR += brisk-menu
+    SUBDIR += cde
     SUBDIR += cinnamon
     SUBDIR += cinnamon-desktop
     SUBDIR += cinnamon-menus
@@ -74,7 +75,6 @@
     SUBDIR += gmrun
     SUBDIR += gnome-clipboard-daemon
     SUBDIR += gnome-desktop
-    SUBDIR += gnome-desktop-reference
     SUBDIR += gnome-menus
     SUBDIR += gnome-pie
     SUBDIR += gnome-session
@@ -216,9 +216,11 @@
     SUBDIR += lxhotkey
     SUBDIR += lxmenu-data
     SUBDIR += lxpanel
+    SUBDIR += lxqt-about
     SUBDIR += lxqt-globalkeys
     SUBDIR += lxqt-globalkeys-l10n
     SUBDIR += lxqt-l10n
+    SUBDIR += lxqt-runner
     SUBDIR += lxrandr
     SUBDIR += mate
     SUBDIR += mate-applets
@@ -258,6 +260,7 @@
     SUBDIR += p5-XTerm-Conf
     SUBDIR += pantheon-terminal
     SUBDIR += pcdm
+    SUBDIR += perwindowlayoutd
     SUBDIR += pipeglade
     SUBDIR += pixman
     SUBDIR += plasma-scriptengine-python-kde4
@@ -277,6 +280,7 @@
     SUBDIR += py-pyvirtualdisplay
     SUBDIR += py-qt4-opengl
     SUBDIR += py-qt5-opengl
+    SUBDIR += py-xcffib
     SUBDIR += py-xdot
     SUBDIR += py-xdot06
     SUBDIR += qimageblitz
@@ -331,7 +335,6 @@
     SUBDIR += thingylaunch
     SUBDIR += tilda
     SUBDIR += tint
-    SUBDIR += tint-devel
     SUBDIR += trayer
     SUBDIR += tycoon
     SUBDIR += urxvt-font-size

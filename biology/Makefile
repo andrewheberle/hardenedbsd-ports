@@ -10,7 +10,6 @@
     SUBDIR += bcftools
     SUBDIR += bedtools
     SUBDIR += biococoa
-    SUBDIR += blat
     SUBDIR += bowtie
     SUBDIR += bowtie2
     SUBDIR += bwa
@@ -66,6 +65,7 @@
     SUBDIR += mummer
     SUBDIR += muscle
     SUBDIR += ncbi-blast+
+    SUBDIR += ncbi-cxx-toolkit
     SUBDIR += ncbi-toolkit
     SUBDIR += ngs-sdk
     SUBDIR += njplot
@@ -104,9 +104,13 @@
     SUBDIR += py-biopython
     SUBDIR += py-bx-python
     SUBDIR += py-cutadapt
+    SUBDIR += py-gffutils
+    SUBDIR += py-gtfparse
+    SUBDIR += py-loompy
     SUBDIR += py-macs2
     SUBDIR += py-orange3-bioinformatics
     SUBDIR += py-orange3-single-cell
+    SUBDIR += py-pyfaidx
     SUBDIR += py-pysam
     SUBDIR += pycogent
     SUBDIR += pyfasta
@@ -131,14 +135,13 @@
     SUBDIR += tRNAscan-SE
     SUBDIR += t_coffee
     SUBDIR += tabixpp
-    SUBDIR += tinker
     SUBDIR += treepuzzle
     SUBDIR += trimadap
     SUBDIR += trimmomatic
     SUBDIR += ugene
     SUBDIR += unanimity
-    SUBDIR += vcftools
     SUBDIR += vcflib
+    SUBDIR += vcftools
     SUBDIR += velvet
     SUBDIR += wise
     SUBDIR += xmolwt

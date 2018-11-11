@@ -9,12 +9,11 @@
     SUBDIR += GraphicsMagick
     SUBDIR += Hermes
     SUBDIR += IPA
-    SUBDIR += ImageMagick
-    SUBDIR += ImageMagick-nox11
+    SUBDIR += ImageMagick6
+    SUBDIR += ImageMagick6-nox11
     SUBDIR += ImageMagick7
     SUBDIR += ImageMagick7-nox11
     SUBDIR += O2-tools
-    SUBDIR += OpenEXR
     SUBDIR += R-cran-DiagrammeR
     SUBDIR += R-cran-GDD
     SUBDIR += R-cran-RColorBrewer
@@ -84,7 +83,6 @@
     SUBDIR += cadubi
     SUBDIR += caffe
     SUBDIR += cairo
-    SUBDIR += cairo-reference
     SUBDIR += cairomm
     SUBDIR += cal3d
     SUBDIR += camera
@@ -95,6 +93,7 @@
     SUBDIR += cegui
     SUBDIR += cenon
     SUBDIR += cfdg
+    SUBDIR += charls
     SUBDIR += chbg
     SUBDIR += cimg
     SUBDIR += cinepaint
@@ -154,6 +153,8 @@
     SUBDIR += drawpile
     SUBDIR += driconf
     SUBDIR += drm-devel-kmod
+    SUBDIR += drm-kmod
+    SUBDIR += drm-legacy-kmod
     SUBDIR += drm-next-kmod
     SUBDIR += drm-stable-kmod
     SUBDIR += dspdfviewer
@@ -238,7 +239,6 @@
     SUBDIR += gdtclft
     SUBDIR += geeqie
     SUBDIR += gegl
-    SUBDIR += gegl3
     SUBDIR += generic_image_decoder
     SUBDIR += geoapi
     SUBDIR += geomorph
@@ -289,12 +289,13 @@
     SUBDIR += gmic
     SUBDIR += gmic-qt
     SUBDIR += gmt
+    SUBDIR += gmt5
+    SUBDIR += gmt5-dcw
+    SUBDIR += gmt5-gshhg
     SUBDIR += gnash
     SUBDIR += gnofract4d
     SUBDIR += gnome-color-manager
     SUBDIR += gnome-video-effects
-    SUBDIR += gnustep-slideshow
-    SUBDIR += gnustep-slideshowkit
     SUBDIR += gocr
     SUBDIR += goocanvas
     SUBDIR += goocanvas2
@@ -341,6 +342,7 @@
     SUBDIR += gstreamer1-plugins-openjpeg
     SUBDIR += gstreamer1-plugins-png
     SUBDIR += gstreamer1-plugins-rsvg
+    SUBDIR += gstreamer1-plugins-vulkan
     SUBDIR += gstreamer1-plugins-webp
     SUBDIR += gstreamer1-plugins-zbar
     SUBDIR += gthumb
@@ -533,6 +535,7 @@
     SUBDIR += libgnomecanvasmm26
     SUBDIR += libgphoto2
     SUBDIR += libgxps
+    SUBDIR += libheif
     SUBDIR += libimg
     SUBDIR += libiptcdata
     SUBDIR += libjpeg-turbo
@@ -630,6 +633,7 @@
     SUBDIR += metacam
     SUBDIR += metapixel
     SUBDIR += mhgui
+    SUBDIR += minder
     SUBDIR += ming
     SUBDIR += mirage
     SUBDIR += mmrecover
@@ -658,6 +662,7 @@
     SUBDIR += ogre3d
     SUBDIR += okular
     SUBDIR += okular-kde4
+    SUBDIR += open3d
     SUBDIR += opencollada
     SUBDIR += opencolorio
     SUBDIR += opencolorio-tools
@@ -666,6 +671,7 @@
     SUBDIR += opencv-core
     SUBDIR += opencv-java
     SUBDIR += opendx
+    SUBDIR += openexr
     SUBDIR += openfx-arena
     SUBDIR += openfx-io
     SUBDIR += openfx-misc
@@ -687,6 +693,7 @@
     SUBDIR += osgearth
     SUBDIR += oyranos
     SUBDIR += p5-Acme-Steganography-Image-Png
+    SUBDIR += p5-Algorithm-Line-Bresenham
     SUBDIR += p5-Alien-Gimp
     SUBDIR += p5-Barcode-ZBar
     SUBDIR += p5-CAD-Drawing
@@ -831,6 +838,8 @@
     SUBDIR += php71-gd
     SUBDIR += php72-exif
     SUBDIR += php72-gd
+    SUBDIR += php73-exif
+    SUBDIR += php73-gd
     SUBDIR += phplot
     SUBDIR += picpuz
     SUBDIR += piddle
@@ -877,6 +886,7 @@
     SUBDIR += pstoedit
     SUBDIR += pstoepsi
     SUBDIR += ptex
+    SUBDIR += py-OWSLib
     SUBDIR += py-PyOpenGL
     SUBDIR += py-PyOpenGL-accelerate
     SUBDIR += py-PyX
@@ -916,11 +926,11 @@
     SUBDIR += py-mcomix
     SUBDIR += py-ming
     SUBDIR += py-nwdiag
+    SUBDIR += py-open3d-python
     SUBDIR += py-opencolorio
     SUBDIR += py-opencv
     SUBDIR += py-openexr
     SUBDIR += py-openimageio
-    SUBDIR += py-OWSLib
     SUBDIR += py-paint
     SUBDIR += py-photocollage
     SUBDIR += py-pillow
@@ -984,6 +994,7 @@
     SUBDIR += quesa
     SUBDIR += quesoglc
     SUBDIR += qxv
+    SUBDIR += radiance
     SUBDIR += radius-engine
     SUBDIR += raster3d
     SUBDIR += rawstudio
@@ -1117,13 +1128,16 @@
     SUBDIR += vigra
     SUBDIR += vips
     SUBDIR += visprint
+    SUBDIR += vkd3d
     SUBDIR += volpack
     SUBDIR += vp
+    SUBDIR += vulkan-loader
+    SUBDIR += vv
     SUBDIR += waffle
     SUBDIR += waifu2x-converter-cpp
     SUBDIR += wayland
-    SUBDIR += waylandpp
     SUBDIR += wayland-protocols
+    SUBDIR += waylandpp
     SUBDIR += webp
     SUBDIR += wings
     SUBDIR += wmicons

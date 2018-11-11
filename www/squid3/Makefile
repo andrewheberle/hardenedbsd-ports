@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	squid
-PORTVERSION=	3.5.27
-PORTREVISION=	3
+PORTVERSION=	3.5.28
+PORTREVISION=	1
 CATEGORIES=	www ipv6
 MASTER_SITES=	http://www.squid-cache.org/Versions/v3/${PORTVERSION:R}/ \
 		http://www2.us.squid-cache.org/Versions/v3/${PORTVERSION:R}/ \
@@ -29,6 +29,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 CONFLICTS=	squid*-4.*
 
 BROKEN_powerpc64=	Does not build: error: unrecognizable insn
+
+USE_HARDENING=	safestack
 
 USES=		compiler cpe perl5 shebangfix tar:xz
 CPE_VENDOR=	squid-cache
@@ -114,7 +116,7 @@ SSL_CONFIGURE_ON=		--with-openssl=${OPENSSLBASE} \
 				LIBOPENSSL_CFLAGS=-I${OPENSSLINC} \
 				LIBOPENSSL_LIBS="-lcrypto -lssl"
 SSL_USES=			ssl
-SSL_VARS=			BROKEN_SSL=openssl-devel
+SSL_VARS=			BROKEN_SSL=openssl111
 SSL_CRTD_CONFIGURE_ENABLE=	ssl-crtd
 SSL_CRTD_IMPLIES=		SSL
 STACKTRACES_CONFIGURE_ENABLE=	stacktraces
@@ -218,6 +220,7 @@ CONFIGURE_ARGS=	--with-default-user=squid \
 		--with-pidfile=/var/run/squid/squid.pid \
 		--with-swapdir=/var/squid/cache \
 		--without-gnutls \
+		--with-included-ltdl \
 		--enable-auth \
 		--enable-zph-qos \
 		--enable-build-info \

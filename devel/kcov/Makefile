@@ -2,8 +2,7 @@
 
 PORTNAME=	kcov
 DISTVERSIONPREFIX=	v
-DISTVERSION=	35-57
-DISTVERSIONSUFFIX=	-g69dfa9c
+DISTVERSION=	36
 CATEGORIES=	devel
 
 MAINTAINER=	asomers@FreeBSD.org
@@ -13,7 +12,6 @@ LICENSE=	GPLv2 MIT # MIT for bundled handlebars, jquery, tablesorter
 LICENSE_COMB=	multi
 LICENSE_FILE_GPLv2=	${WRKSRC}/COPYING
 
-BROKEN_FreeBSD_10= PR228478 devel/elfutils: undefined symbols on 10.4-RELEASE
 ONLY_FOR_ARCHS=	amd64
 ONLY_FOR_ARCHS_REASON=	ptrace code is only implemented for amd64
 
@@ -30,7 +28,6 @@ CMAKE_ARGS=	-DKCOV_INSTALL_MANDIR=${PREFIX}/man -DPORTVERSION=${PORTVERSION}
 
 SHEBANG_GLOB=	*.py
 
-# Use a GitHub tag until version 36 gets released, whenever that might be
 USE_GITHUB=	yes
 GH_ACCOUNT=	SimonKagstrom
 

@@ -68,11 +68,11 @@
     SUBDIR += libspectrum
     SUBDIR += linux-c6
     SUBDIR += linux-c7
+    SUBDIR += linux-power9-functional-sim
     SUBDIR += linux_base-c6
     SUBDIR += linux_base-c7
     SUBDIR += lisaem
     SUBDIR += loemu
-    SUBDIR += m2000
     SUBDIR += mame
     SUBDIR += mastergear
     SUBDIR += mednafen
@@ -150,7 +150,6 @@
     SUBDIR += vgb-bin
     SUBDIR += vgba-bin
     SUBDIR += vice
-    SUBDIR += virtio-kmod
     SUBDIR += virtualbox-ose
     SUBDIR += virtualbox-ose-additions
     SUBDIR += virtualbox-ose-additions-nox11

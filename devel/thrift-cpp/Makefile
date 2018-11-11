@@ -3,7 +3,7 @@
 
 PORTNAME=	thrift
 PORTVERSION=	${THRIFT_PORTVERSION} # to keep in sync with thrift
-PORTREVISION=	2
+PORTREVISION=	3
 PORTEPOCH=	1
 CATEGORIES=	devel
 MASTER_SITES=	APACHE/thrift/${PORTVERSION}
@@ -19,8 +19,8 @@ LIB_DEPENDS=	libboost_system.so:devel/boost-libs \
 DISTINFO_FILE=		${.CURDIR}/../thrift/distinfo
 
 BROKEN_powerpc64=	fails to compile: undefined reference to std::__throw_out_of_range_fmt
-BROKEN_SSL=	openssl-devel
-BROKEN_SSL_REASON_openssl-devel=	'configure: error: "Error: libcrypto required."'
+BROKEN_SSL=	openssl111
+BROKEN_SSL_REASON_openssl111=	'configure: error: "Error: libcrypto required."'
 
 USES=			autoreconf pkgconfig gmake compiler:c++11-lang \
 			libtool pathfix ssl

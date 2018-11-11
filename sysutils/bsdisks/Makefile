@@ -1,12 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	bsdisks
-PORTVERSION=	0.4
-PORTREVISION=	1
+DISTVERSION=	0.5
 CATEGORIES=	sysutils
 MASTER_SITES=	https://bitbucket.org/arrowd/bsdisks/downloads/
 
-MAINTAINER=	6yearold@gmail.com
+MAINTAINER=	arrowd@FreeBSD.org
 COMMENT=	UDisks2 service implementation for FreeBSD
 
 LICENSE=	BSD3CLAUSE

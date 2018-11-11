@@ -71,13 +71,13 @@
     SUBDIR += jcommon
     SUBDIR += jd-gui
     SUBDIR += jdbcpool
+    SUBDIR += jdk10-doc
     SUBDIR += jdk8-doc
     SUBDIR += jdk9-doc
     SUBDIR += jdom
     SUBDIR += jflex
     SUBDIR += jfreechart
     SUBDIR += jgraph
-    SUBDIR += jgrapht
     SUBDIR += jgraphx
     SUBDIR += jikes
     SUBDIR += jlex
@@ -129,6 +129,9 @@
     SUBDIR += visualvm
     SUBDIR += wildfly10
     SUBDIR += wildfly11
+    SUBDIR += wildfly12
+    SUBDIR += wildfly13
+    SUBDIR += wildfly14
     SUBDIR += wildfly90
     SUBDIR += xdoclet
 

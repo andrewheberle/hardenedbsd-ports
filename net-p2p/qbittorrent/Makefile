@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	qbittorrent
-DISTVERSION=	4.1.1
-PORTREVISION=	2
+DISTVERSION=	4.1.3
+PORTREVISION=	1
 CATEGORIES=	net-p2p ipv6
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
@@ -12,8 +12,6 @@ COMMENT=	Bittorrent client using Qt4/5 and libtorrent-rasterbar
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
-
-BROKEN_FreeBSD_10=	error: no matching constructor for initialization of 'const QString'
 
 LIB_DEPENDS=	libtorrent-rasterbar.so:net-p2p/libtorrent-rasterbar \
 		libboost_system.so:devel/boost-libs

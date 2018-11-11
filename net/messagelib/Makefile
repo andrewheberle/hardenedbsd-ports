@@ -1,5 +1,5 @@
 # $FreeBSD$
- 
+
 PORTNAME=	messagelib
 DISTVERSION=	${KDE_APPLICATIONS_VERSION}
 PORTREVISION=	1
@@ -27,13 +27,13 @@ USE_KDE+=	akonadi akonadicontacts akonadimime akonadisearch calendarcore \
 		contacts grantleetheme gravatar identitymanagement \
 		kdepim-apps-libs ldap libkdepim libkleo mailtransport mbox \
 		mime pimcommon pimtextedit
-USE_QT=		core dbus gui location network printsupport qml quick testlib \
+USE_QT=		core dbus declarative gui location network printsupport testlib \
 		uitools webchannel webengine widgets xml \
 		buildtools_build qmake_build
 USE_LDCONFIG=	yes
 
 
-OPTIONS_DEFINE=		INOTIFY
+OPTIONS_DEFINE=		INOTIFY DOCS
 OPTIONS_DEFAULT=	INOTIFY
 OPTIONS_SUB=		yes
 
