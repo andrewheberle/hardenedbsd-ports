@@ -12,12 +12,8 @@ COMMENT=	Package manager
 
 LICENSE=	BSD2CLAUSE
 
-<<<<<<< HEAD
-USE_HARDENING=	pie:configure cfi:off cdcfi:off
-=======
-USE_HARDENING=	pie:configure retpoline:off
+USE_HARDENING=	pie:configure cfi:off cdcfi:off retpoline:off
 SSP_CFLAGS=	-fstack-protector
->>>>>>> upstream/master
 
 USE_LDCONFIG=	yes
 USES=		libtool tar:xz
